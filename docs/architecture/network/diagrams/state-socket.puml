@@ -1,0 +1,52 @@
+@startuml Socket_States
+title TCP Socket States
+
+skinparam state {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+}
+
+[*] --> CLOSED : socket()
+
+state "Connection Setup" as setup {
+    CLOSED --> LISTEN : listen() [server]
+    CLOSED --> SYN_SENT : connect() [client]
+    
+    LISTEN --> SYN_RECEIVED : recv SYN, send SYN+ACK
+    SYN_SENT --> ESTABLISHED : recv SYN+ACK, send ACK
+    SYN_RECEIVED --> ESTABLISHED : recv ACK
+}
+
+state "Established" as established {
+    ESTABLISHED : Data transfer
+    ESTABLISHED --> ESTABLISHED : send/recv data
+}
+
+state "Connection Teardown" as teardown {
+    ESTABLISHED --> FIN_WAIT_1 : close() [active close]
+    ESTABLISHED --> CLOSE_WAIT : recv FIN [passive close]
+    
+    FIN_WAIT_1 --> FIN_WAIT_2 : recv ACK
+    FIN_WAIT_1 --> CLOSING : recv FIN
+    FIN_WAIT_1 --> TIME_WAIT : recv FIN+ACK
+    
+    FIN_WAIT_2 --> TIME_WAIT : recv FIN
+    CLOSING --> TIME_WAIT : recv ACK
+    
+    CLOSE_WAIT --> LAST_ACK : close()
+    LAST_ACK --> CLOSED : recv ACK
+    
+    TIME_WAIT --> CLOSED : 2*MSL timeout
+}
+
+TIME_WAIT : Wait 2*MSL before reuse
+note right of TIME_WAIT
+    Prevents delayed packets
+    from previous connection
+end note
+
+note bottom of ESTABLISHED
+    Most time spent here
+    during normal operation
+end note
+@enduml

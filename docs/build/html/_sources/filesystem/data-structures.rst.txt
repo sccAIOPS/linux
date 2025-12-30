@@ -6,16 +6,13 @@ Filesystem Data Structures
    :depth: 2
    :local:
 
-Structure Diagram
------------------
-
-.. uml:: diagrams/class-structures.puml
-
 Key Structures
 --------------
 
 
 From ``include/linux/fs.h``:
+
+.. uml:: diagrams/class-fs.puml
 
 * ``struct address_space``
 * ``struct address_space_operations``
@@ -40,6 +37,8 @@ From ``include/linux/fs.h``:
 
 From ``include/linux/dcache.h``:
 
+.. uml:: diagrams/class-dcache.puml
+
 * ``struct __anon7c184f810208``
 * ``struct dentry``
 * ``struct dentry_operations``
@@ -47,4 +46,6 @@ From ``include/linux/dcache.h``:
 * ``struct qstr``
 
 From ``include/linux/namei.h``:
+
+.. uml:: diagrams/class-namei.puml
 

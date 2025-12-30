@@ -1,0 +1,95 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct sock_common" as sock_common <<struct>> {
+    +__addrpair skc_addrpair
+    +__be32 skc_daddr
+    +__be32 skc_rcv_saddr
+    --
+    struct sock_common - minimal network layer represe...
+}
+
+class "struct sock" as sock <<struct>> {
+    -struct sock_common __sk_common
+    +atomic_t sk_drops
+    +__s32 sk_peek_off
+    +struct sk_buff_head sk_error_queue
+    +struct sk_buff_head sk_receive_queue
+    +atomic_t rmem_alloc
+    +int len
+    +struct sk_buff * head
+    +struct sk_buff * tail
+    --
+    struct sock - network layer representation of sock...
+}
+
+class "struct sock_bh_locked" as sock_bh_locked <<struct>> {
+    +struct sock * sock
+    +local_lock_t bh_lock
+}
+
+class "struct proto_accept_arg" as proto_accept_arg <<struct>> {
+    +int flags
+    +int err
+    +int is_empty
+    +bool kern
+}
+
+class "struct proto" as proto <<struct>> {
+    +int inuse_idx
+    +atomic_long_t * memory_allocated
+    +struct percpu_counter * sockets_allocated
+    +long * memory_pressure
+    +long * sysctl_mem
+    +int * sysctl_wmem
+    +int * sysctl_rmem
+    +u32 sysctl_wmem_offset
+    +u32 sysctl_rmem_offset
+    +int max_header
+    +bool no_autobind
+    +struct kmem_cache * slab
+    +int obj_size
+    +int ipv6_pinfo_offset
+    +slab_flags_t slab_flags
+    +int useroffset
+    +int usersize
+    +struct request_sock_ops * rsk_prot
+    +struct timewait_sock_ops * twsk_prot
+    +struct inet_hashinfo * hashinfo
+    .. 3 more fields ..
+}
+
+class "struct prot_inuse" as prot_inuse <<struct>> {
+    +int all
+    +int[PROTO_INUSE_NR] val
+}
+
+class "struct socket_alloc" as socket_alloc <<struct>> {
+    +struct socket socket
+    +struct inode vfs_inode
+}
+
+class "struct sockcm_cookie" as sockcm_cookie <<struct>> {
+    +u64 transmit_time
+    +u32 mark
+    +u32 tsflags
+    +u32 ts_opt_id
+    +u32 priority
+    +u32 dmabuf_id
+}
+
+class "struct sock_skb_cb" as sock_skb_cb <<struct>> {
+    +u32 dropcount
+}
+
+sock *-- sock_common : __sk_common
+sock_bh_locked --> sock : sock
+@enduml

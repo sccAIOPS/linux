@@ -1,0 +1,66 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct sockaddr" as sockaddr <<struct>> {
+    +sa_family_t sa_family
+    +char[14] sa_data
+}
+
+class "struct sockaddr_unsized" as sockaddr_unsized <<struct>> {
+    +__kernel_sa_family_t sa_family
+    +char sa_data
+    --
+    struct sockaddr_unsized - Unspecified size sockadd...
+}
+
+class "struct linger" as linger <<struct>> {
+    +int l_onoff
+    +int l_linger
+}
+
+class "struct msghdr" as msghdr <<struct>> {
+    +void * msg_name
+    +int msg_namelen
+    +int msg_inq
+    +struct iov_iter msg_iter
+    +void * msg_control
+}
+
+class "struct user_msghdr" as user_msghdr <<struct>> {
+    +int msg_namelen
+    +__kernel_size_t msg_iovlen
+    +__kernel_size_t msg_controllen
+    +int msg_flags
+}
+
+class "struct mmsghdr" as mmsghdr <<struct>> {
+    +struct user_msghdr msg_hdr
+    +int msg_len
+}
+
+class "struct cmsghdr" as cmsghdr <<struct>> {
+    +__kernel_size_t cmsg_len
+    +int cmsg_level
+    +int cmsg_type
+}
+
+class "struct ucred" as ucred <<struct>> {
+    +__u32 pid
+    +__u32 uid
+    +__u32 gid
+}
+
+class "struct scm_timestamping_internal" as scm_timestamping_internal <<struct>> {
+    +struct timespec64[3] ts
+}
+
+mmsghdr *-- user_msghdr : msg_hdr
+@enduml

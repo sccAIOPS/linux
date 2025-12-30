@@ -17,6 +17,7 @@ OUTPUT_FORMAT="html"  # html, pdf, latex
 CLEAN_FIRST=0
 OPEN_BROWSER=0
 PLANTUML_JAR=""
+VERBOSE=${VERBOSE:-0}
 
 usage() {
     cat << EOF

@@ -6,16 +6,13 @@ Network Data Structures
    :depth: 2
    :local:
 
-Structure Diagram
------------------
-
-.. uml:: diagrams/class-structures.puml
-
 Key Structures
 --------------
 
 
 From ``include/linux/socket.h``:
+
+.. uml:: diagrams/class-socket.puml
 
 * ``struct cmsghdr``
 * ``struct linger``
@@ -28,6 +25,8 @@ From ``include/linux/socket.h``:
 * ``struct user_msghdr``
 
 From ``include/net/sock.h``:
+
+.. uml:: diagrams/class-sock.puml
 
 * ``struct __anonf0c9d8100108``
 * ``struct __anonf0c9d8100308``
@@ -45,6 +44,8 @@ From ``include/net/sock.h``:
 * ``struct socket_alloc``
 
 From ``include/linux/skbuff.h``:
+
+.. uml:: diagrams/class-skbuff.puml
 
 * ``struct __anonbf5f7bea0808``
 * ``struct __anonbf5f7bea0908``

@@ -1,0 +1,121 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct nf_bridge_info" as nf_bridge_info <<struct>> {
+}
+
+class "struct tc_skb_ext" as tc_skb_ext <<struct>> {
+    +u64 act_miss_cookie
+    +__u32 chain
+}
+
+class "struct sk_buff_head" as sk_buff_head <<struct>> {
+    +struct sk_buff * next
+    +struct sk_buff * prev
+    +__u32 qlen
+    +spinlock_t lock
+}
+
+class "struct skb_frag" as skb_frag <<struct>> {
+    +netmem_ref netmem
+    +int len
+    +int offset
+}
+
+class "struct skb_shared_hwtstamps" as skb_shared_hwtstamps <<struct>> {
+    +ktime_t hwtstamp
+    +void * netdev_data
+    --
+    struct skb_shared_hwtstamps - hardware time stamps...
+}
+
+class "struct ubuf_info_ops" as ubuf_info_ops <<struct>> {
+}
+
+class "struct ubuf_info" as ubuf_info <<struct>> {
+    +struct ubuf_info_ops * ops
+    +refcount_t refcnt
+    +u8 flags
+}
+
+class "struct ubuf_info_msgzc" as ubuf_info_msgzc <<struct>> {
+    +struct ubuf_info ubuf
+    +long desc
+    +void * ctx
+}
+
+class "struct mmpin" as mmpin <<struct>> {
+    +struct user_struct * user
+    +int num_pg
+}
+
+class "struct xsk_tx_metadata_compl" as xsk_tx_metadata_compl <<struct>> {
+    +__u64 * tx_timestamp
+}
+
+class "struct skb_shared_info" as skb_shared_info <<struct>> {
+    +__u8 flags
+    +__u8 meta_len
+    +__u8 nr_frags
+    +__u8 tx_flags
+    +short gso_size
+    +short gso_segs
+    +struct sk_buff * frag_list
+    +struct skb_shared_hwtstamps hwtstamps
+    +struct xsk_tx_metadata_compl xsk_meta
+}
+
+class "struct sk_buff" as sk_buff <<struct>> {
+    +struct sk_buff * next
+    +struct sk_buff * prev
+    +struct net_device * dev
+    +long dev_scratch
+    --
+    struct sk_buff - socket buffer @next: Next buffer ...
+}
+
+class "struct sk_buff_fclones" as sk_buff_fclones <<struct>> {
+    +struct sk_buff skb1
+    +struct sk_buff skb2
+    +refcount_t fclone_ref
+}
+
+class "struct skb_seq_state" as skb_seq_state <<struct>> {
+    +__u32 lower_offset
+    +__u32 upper_offset
+    +__u32 frag_idx
+    +__u32 stepped_offset
+    +struct sk_buff * root_skb
+    +struct sk_buff * cur_skb
+    +__u8 * frag_data
+    +__u32 frag_off
+}
+
+class "struct skb_ext" as skb_ext <<struct>> {
+    +refcount_t refcnt
+    +u8[SKB_EXT_NUM] offset
+    +u8 chunks
+    --
+    struct skb_ext - sk_buff extensions @refcnt: 1 on ...
+}
+
+sk_buff_head --> sk_buff : next
+sk_buff_head --> sk_buff : prev
+ubuf_info --> ubuf_info_ops : ops
+ubuf_info_msgzc *-- ubuf_info : ubuf
+skb_shared_info --> sk_buff : frag_list
+skb_shared_info *-- skb_shared_hwtstamps : hwtstamps
+skb_shared_info *-- xsk_tx_metadata_compl : xsk_meta
+sk_buff_fclones *-- sk_buff : skb1
+sk_buff_fclones *-- sk_buff : skb2
+skb_seq_state --> sk_buff : root_skb
+skb_seq_state --> sk_buff : cur_skb
+@enduml

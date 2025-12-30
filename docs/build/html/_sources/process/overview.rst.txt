@@ -48,5 +48,5 @@ See :doc:`data-structures` for key data structure documentation.
 Generated
 ---------
 
-This documentation was auto-generated on 2025-12-30 18:08:35.
+This documentation was auto-generated on 2025-12-30 19:22:59.
 

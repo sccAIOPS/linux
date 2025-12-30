@@ -1,0 +1,63 @@
+@startuml Network_Send
+title Network Packet Send Flow
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+
+participant "User Space" as user #LightBlue
+participant "Socket Layer" as sock #LightGreen
+participant "TCP" as tcp #LightYellow
+participant "IP" as ip #LightPink
+participant "Network Device" as dev #LightGray
+participant "NIC Driver" as nic #Wheat
+
+user -> sock: send(fd, buf, len, flags)
+activate sock
+
+sock -> sock: sock_sendmsg()
+sock -> tcp: tcp_sendmsg()
+activate tcp
+
+tcp -> tcp: allocate sk_buff
+tcp -> tcp: copy_from_user()
+tcp -> tcp: tcp_push()
+tcp -> tcp: __tcp_push_pending_frames()
+
+tcp -> ip: ip_queue_xmit()
+activate ip
+
+ip -> ip: ip_local_out()
+ip -> ip: add IP header
+ip -> ip: ip_output()
+ip -> ip: ip_finish_output()
+
+ip -> dev: dev_queue_xmit()
+activate dev
+
+dev -> dev: netfilter hooks
+dev -> dev: traffic control (qdisc)
+dev -> nic: ndo_start_xmit()
+activate nic
+
+nic -> nic: DMA to hardware
+nic --> dev: NETDEV_TX_OK
+deactivate nic
+
+dev --> ip: transmitted
+deactivate dev
+
+ip --> tcp: sent
+deactivate ip
+
+tcp --> sock: bytes queued
+deactivate tcp
+
+sock --> user: bytes sent
+deactivate sock
+
+note over user,nic
+    Packet path:
+    send() -> socket -> TCP -> IP -> device -> driver -> NIC
+    Each layer adds headers and performs processing
+end note
+@enduml

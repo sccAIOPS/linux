@@ -1,0 +1,20 @@
+@startuml C4_Component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Networking - Component Diagram
+
+LAYOUT_WITH_LEGEND()
+
+Container_Boundary(subsys, "Networking") {
+    Component(socket, "Socket", "C", "Socket layer")
+    Component(tcp, "TCP", "C", "TCP protocol")
+    Component(udp, "UDP", "C", "UDP protocol")
+    Component(ip, "IP", "C", "IP layer")
+    Component(netfilter, "Netfilter", "C", "Packet filtering")
+}
+
+Rel(socket, tcp, "Uses")
+Rel(tcp, udp, "Uses")
+Rel(udp, ip, "Uses")
+Rel(ip, netfilter, "Uses")
+@enduml

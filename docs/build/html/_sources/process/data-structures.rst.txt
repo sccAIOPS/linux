@@ -6,16 +6,13 @@ Process Data Structures
    :depth: 2
    :local:
 
-Structure Diagram
------------------
-
-.. uml:: diagrams/class-structures.puml
-
 Key Structures
 --------------
 
 
 From ``include/linux/sched.h``:
+
+.. uml:: diagrams/class-sched.puml
 
 * ``struct __anonb5778bb00308``
 * ``struct kmap_ctrl``
@@ -34,6 +31,8 @@ From ``include/linux/sched.h``:
 * ``struct wake_q_node``
 
 From ``include/linux/sched/signal.h``:
+
+.. uml:: diagrams/class-signal.puml
 
 * ``struct core_state``
 * ``struct core_thread``

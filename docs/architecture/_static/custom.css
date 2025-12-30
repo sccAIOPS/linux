@@ -1,0 +1,9 @@
+/* Custom styles for kernel architecture documentation */
+
+.rst-content .highlight pre {
+    font-size: 0.85em;
+}
+
+.rst-content table.docutils td {
+    vertical-align: top;
+}

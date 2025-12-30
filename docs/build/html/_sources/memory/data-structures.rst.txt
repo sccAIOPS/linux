@@ -6,16 +6,13 @@ Memory Data Structures
    :depth: 2
    :local:
 
-Structure Diagram
------------------
-
-.. uml:: diagrams/class-structures.puml
-
 Key Structures
 --------------
 
 
 From ``include/linux/mm.h``:
+
+.. uml:: diagrams/class-mm.puml
 
 * ``struct __anon44b148830208``
 * ``struct follow_pfnmap_args``
@@ -26,6 +23,8 @@ From ``include/linux/mm.h``:
 * ``struct zap_details``
 
 From ``include/linux/mm_types.h``:
+
+.. uml:: diagrams/class-mm_types.puml
 
 * ``struct __anon014d35370108``
 * ``struct __anon014d35370308``
@@ -49,5 +48,7 @@ From ``include/linux/mm_types.h``:
 * ``struct __anon014d35372808``
 
 From ``include/linux/slab.h``:
+
+.. uml:: diagrams/class-slab.puml
 
 * ``struct kmem_cache_args``
