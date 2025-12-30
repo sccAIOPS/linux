@@ -1,0 +1,198 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct iattr" as iattr <<struct>> {
+    +int ia_valid
+    +umode_t ia_mode
+}
+
+class "struct kiocb" as kiocb <<struct>> {
+    +struct file * ki_filp
+    +loff_t ki_pos
+    +void * private
+    +int ki_flags
+    +u16 ki_ioprio
+    +u8 ki_write_stream
+    +struct wait_page_queue * ki_waitq
+}
+
+class "struct address_space_operations" as address_space_operations <<struct>> {
+}
+
+class "struct address_space" as address_space <<struct>> {
+    +struct inode * host
+    +struct xarray i_pages
+    +struct rw_semaphore invalidate_lock
+    +gfp_t gfp_mask
+    +atomic_t i_mmap_writable
+    +atomic_t nr_thps
+    +struct rb_root_cached i_mmap
+    +long nrpages
+    +pgoff_t writeback_index
+    +struct address_space_operations * a_ops
+    +long flags
+    +errseq_t wb_err
+    +spinlock_t i_private_lock
+    +struct list_head i_private_list
+    +struct rw_semaphore i_mmap_rwsem
+    +void * i_private_data
+    --
+    struct address_space - Contents of a cacheable, ma...
+}
+
+class "struct inode_state_flags" as inode_state_flags <<struct>> {
+    -enum inode_state_flags_enum __state
+}
+
+class "struct inode" as inode <<struct>> {
+    +umode_t i_mode
+    +short i_opflags
+    +int i_flags
+    +struct posix_acl * i_acl
+    +struct posix_acl * i_default_acl
+    +kuid_t i_uid
+    +kgid_t i_gid
+    +struct inode_operations * i_op
+    +struct super_block * i_sb
+    +struct address_space * i_mapping
+    +void * i_security
+    +long i_ino
+    +int i_nlink
+    -int __i_nlink
+}
+
+class "struct fown_struct" as fown_struct <<struct>> {
+    +struct file * file
+    +rwlock_t lock
+    +struct pid * pid
+    +enum pid_type pid_type
+    +int signum
+}
+
+class "struct file_ra_state" as file_ra_state <<struct>> {
+    +pgoff_t start
+    +int size
+    +int async_size
+    +int ra_pages
+    +short order
+    +short mmap_miss
+    +loff_t prev_pos
+    --
+    struct file_ra_state - Track a file's readahead st...
+}
+
+class "struct file" as file <<struct>> {
+    +spinlock_t f_lock
+    +fmode_t f_mode
+    +struct file_operations * f_op
+    +struct address_space * f_mapping
+    +void * private_data
+    +struct inode * f_inode
+    +int f_flags
+    +int f_iocb_flags
+    +struct cred * f_cred
+    +struct fown_struct * f_owner
+    +struct path f_path
+    -struct path __f_path
+    --
+    struct file - Represents a file @f_lock: Protects ...
+}
+
+class "struct file_handle" as file_handle <<struct>> {
+    +__u32 handle_bytes
+    +int handle_type
+}
+
+class "struct fasync_struct" as fasync_struct <<struct>> {
+    +rwlock_t fa_lock
+    +int magic
+    +int fa_fd
+    +struct fasync_struct * fa_next
+    +struct file * fa_file
+    +struct rcu_head fa_rcu
+}
+
+class "struct renamedata" as renamedata <<struct>> {
+    +struct mnt_idmap * mnt_idmap
+    +struct dentry * old_parent
+    +struct dentry * old_dentry
+    +struct dentry * new_parent
+    +struct dentry * new_dentry
+    +struct delegated_inode * delegated_inode
+    +int flags
+    --
+    struct renamedata - contains all information requi...
+}
+
+class "struct dir_context" as dir_context <<struct>> {
+    +filldir_t actor
+    +loff_t pos
+    +int count
+}
+
+class "struct file_operations" as file_operations <<struct>> {
+    +struct module * owner
+    +fop_flags_t fop_flags
+}
+
+class "struct inode_operations" as inode_operations <<struct>> {
+}
+
+class "struct file_system_type" as file_system_type <<struct>> {
+    +char * name
+    +int fs_flags
+    +struct fs_parameter_spec * parameters
+    +struct module * owner
+    +struct hlist_head fs_supers
+    +struct lock_class_key s_lock_key
+    +struct lock_class_key s_umount_key
+    +struct lock_class_key s_vfs_rename_key
+    +struct lock_class_key[SB_FREEZE_LEVELS] s_writers_key
+    +struct lock_class_key i_lock_key
+    +struct lock_class_key i_mutex_key
+    +struct lock_class_key invalidate_lock_key
+    +struct lock_class_key i_mutex_dir_key
+}
+
+class "struct filename" as filename <<struct>> {
+    +char * name
+    +char * uptr
+    +atomic_t refcnt
+    +struct audit_names * aname
+    +char iname
+}
+
+class "struct tree_descr" as tree_descr <<struct>> {
+    +char * name
+}
+
+class "struct offset_ctx" as offset_ctx <<struct>> {
+    +struct maple_tree mt
+    +long next_offset
+}
+
+class "struct simple_transaction_argresp" as simple_transaction_argresp <<struct>> {
+    +ssize_t size
+    +char data
+}
+
+kiocb --> file : ki_filp
+address_space --> inode : host
+address_space --> address_space_operations : a_ops
+inode --> inode_operations : i_op
+inode --> address_space : i_mapping
+fown_struct --> file : file
+file --> file_operations : f_op
+file --> address_space : f_mapping
+file --> inode : f_inode
+file --> fown_struct : f_owner
+fasync_struct --> file : fa_file
+@enduml

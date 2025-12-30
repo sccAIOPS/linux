@@ -1,0 +1,88 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct sighand_struct" as sighand_struct <<struct>> {
+    +spinlock_t siglock
+    +refcount_t count
+    +wait_queue_head_t signalfd_wqh
+    +struct k_sigaction[_NSIG] action
+}
+
+class "struct pacct_struct" as pacct_struct <<struct>> {
+    +int ac_flag
+    +long ac_exitcode
+    +long ac_mem
+}
+
+class "struct cpu_itimer" as cpu_itimer <<struct>> {
+    +u64 expires
+    +u64 incr
+}
+
+class "struct task_cputime_atomic" as task_cputime_atomic <<struct>> {
+    +atomic64_t utime
+    +atomic64_t stime
+    +atomic64_t sum_exec_runtime
+}
+
+class "struct thread_group_cputimer" as thread_group_cputimer <<struct>> {
+    +struct task_cputime_atomic cputime_atomic
+    --
+    struct thread_group_cputimer - thread group interv...
+}
+
+class "struct multiprocess_signals" as multiprocess_signals <<struct>> {
+    +sigset_t signal
+    +struct hlist_node node
+}
+
+class "struct core_thread" as core_thread <<struct>> {
+    +struct task_struct * task
+    +struct core_thread * next
+}
+
+class "struct core_state" as core_state <<struct>> {
+    +atomic_t nr_threads
+    +struct core_thread dumper
+    +struct completion startup
+}
+
+class "struct signal_struct" as signal_struct <<struct>> {
+    +refcount_t sigcnt
+    +atomic_t live
+    +int nr_threads
+    +int quick_threads
+    +struct list_head thread_head
+    +wait_queue_head_t wait_chldexit
+    +struct task_struct * curr_target
+    +struct sigpending shared_pending
+    +struct hlist_head multiprocess
+    +int group_exit_code
+    +int notify_count
+    +struct task_struct * group_exec_task
+    +int group_stop_count
+    +int flags
+    +struct core_state * core_state
+    +int is_child_subreaper
+    +int has_child_subreaper
+    +int timer_create_restore_ids
+    +atomic_t next_posix_timer_id
+    +struct hlist_head posix_timers
+    .. 29 more fields ..
+}
+
+thread_group_cputimer *-- task_cputime_atomic : cputime_atomic
+core_state *-- core_thread : dumper
+signal_struct --> core_state : core_state
+signal_struct "1" *-- "*" cpu_itimer : it
+signal_struct *-- thread_group_cputimer : cputimer
+signal_struct *-- pacct_struct : pacct
+@enduml

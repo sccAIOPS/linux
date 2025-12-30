@@ -1,0 +1,20 @@
+@startuml C4_Component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Process Management - Component Diagram
+
+LAYOUT_WITH_LEGEND()
+
+Container_Boundary(subsys, "Process Management") {
+    Component(scheduler, "Scheduler", "C", "CFS and other scheduling classes")
+    Component(fork, "Fork", "C", "Process creation via fork/clone")
+    Component(exit, "Exit", "C", "Process termination")
+    Component(signal, "Signal", "C", "Signal delivery and handling")
+    Component(ptrace, "Ptrace", "C", "Process tracing")
+}
+
+Rel(scheduler, fork, "Uses")
+Rel(fork, exit, "Uses")
+Rel(exit, signal, "Uses")
+Rel(signal, ptrace, "Uses")
+@enduml

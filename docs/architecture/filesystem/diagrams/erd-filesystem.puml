@@ -1,0 +1,90 @@
+@startuml Filesystem_ERD
+title Virtual File System - Entity Relationships
+
+skinparam linetype ortho
+
+entity "file" as file {
+    * f_path : path
+    --
+    * f_inode : inode*
+    * f_op : file_operations*
+    * f_pos : loff_t
+    * f_count : atomic_long_t
+}
+
+entity "dentry" as dentry {
+    * d_name : qstr
+    --
+    * d_inode : inode*
+    * d_parent : dentry*
+    * d_sb : super_block*
+    * d_flags : unsigned int
+}
+
+entity "inode" as inode {
+    * i_ino : unsigned long
+    --
+    * i_mode : umode_t
+    * i_uid : kuid_t
+    * i_gid : kgid_t
+    * i_size : loff_t
+    * i_op : inode_operations*
+}
+
+entity "super_block" as sb {
+    * s_dev : dev_t
+    --
+    * s_type : file_system_type*
+    * s_root : dentry*
+    * s_op : super_operations*
+}
+
+entity "vfsmount" as mnt {
+    * mnt_root : dentry*
+    --
+    * mnt_sb : super_block*
+    * mnt_flags : int
+}
+
+entity "address_space" as mapping {
+    * host : inode*
+    --
+    * i_pages : xarray
+    * a_ops : address_space_operations*
+}
+
+entity "file_operations" as fops {
+    * read : function*
+    --
+    * write : function*
+    * mmap : function*
+    * open : function*
+}
+
+file }|--|| dentry : "f_path.dentry"
+file }|--|| mnt : "f_path.mnt"
+file }o--|| inode : "f_inode"
+file }o--|| fops : "f_op"
+
+dentry }|--|| inode : "d_inode"
+dentry }|--o| dentry : "d_parent"
+dentry }|--|| sb : "d_sb"
+
+inode ||--|| mapping : "i_mapping"
+inode }|--|| sb : "i_sb"
+
+mnt }|--|| dentry : "mnt_root"
+mnt }|--|| sb : "mnt_sb"
+
+sb ||--|| dentry : "s_root"
+
+note bottom of file
+    Open file descriptor
+    Per-process view of a file
+end note
+
+note bottom of inode
+    On-disk file metadata
+    Shared between all openers
+end note
+@enduml

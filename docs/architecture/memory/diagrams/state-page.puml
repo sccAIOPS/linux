@@ -1,0 +1,49 @@
+@startuml Page_States
+title Linux Page States
+
+skinparam state {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+}
+
+[*] --> Free : Initial state
+
+Free --> Allocated : alloc_pages()
+note right of Free : In buddy allocator free list
+
+state Allocated {
+    [*] --> Clean
+    Clean --> Dirty : write to page
+    Dirty --> Clean : writeback complete
+    Dirty --> Writeback : start writeback
+    Writeback --> Clean : I/O complete
+}
+
+Allocated --> Free : __free_pages()
+
+state "In Page Cache" as cached {
+    [*] --> Inactive
+    Inactive --> Active : page accessed
+    Active --> Inactive : page aging
+    note right: LRU lists for reclaim
+}
+
+Allocated --> cached : add_to_page_cache()
+cached --> Allocated : remove from cache
+
+state "Mapped" as mapped {
+    [*] --> Private
+    Private --> Shared : fork() / mmap()
+    note right: Present in process page tables
+}
+
+Allocated --> mapped : map to process
+mapped --> Allocated : unmap
+
+note bottom of Allocated
+    Page flags (struct page->flags):
+    - PG_locked, PG_dirty, PG_writeback
+    - PG_lru, PG_active, PG_referenced
+    - PG_slab, PG_buddy, PG_compound
+end note
+@enduml

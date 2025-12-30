@@ -1,0 +1,44 @@
+@startuml Task_States
+title Linux Process/Task States
+
+skinparam state {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+}
+
+[*] --> TASK_NEW : fork()/clone()
+
+TASK_NEW --> TASK_RUNNING : wake_up_new_task()
+
+state TASK_RUNNING {
+    [*] --> Running
+    Running --> Ready : preempt/yield
+    Ready --> Running : schedule()
+    note right of Running : Actually executing on CPU
+    note right of Ready : Runnable, waiting for CPU
+}
+
+TASK_RUNNING --> TASK_INTERRUPTIBLE : sleep_on() / wait_event()
+TASK_RUNNING --> TASK_UNINTERRUPTIBLE : sleep_on() / mutex_lock()
+TASK_RUNNING -[#red]-> TASK_STOPPED : SIGSTOP / ptrace
+TASK_RUNNING -[#blue]-> EXIT_ZOMBIE : do_exit()
+
+TASK_INTERRUPTIBLE --> TASK_RUNNING : wake_up() / signal
+TASK_UNINTERRUPTIBLE --> TASK_RUNNING : wake_up()
+
+TASK_STOPPED --> TASK_RUNNING : SIGCONT
+
+TASK_INTERRUPTIBLE : Can be interrupted by signals
+TASK_UNINTERRUPTIBLE : Cannot be interrupted
+TASK_STOPPED : Stopped for debugging/job control
+
+EXIT_ZOMBIE --> EXIT_DEAD : parent calls wait()
+EXIT_ZOMBIE : Terminated, waiting for parent
+
+EXIT_DEAD --> [*] : release_task()
+
+note bottom of TASK_RUNNING
+    Only one state flag set at a time
+    (stored in task->__state)
+end note
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct kmem_cache_args" as kmem_cache_args <<struct>> {
+    +int align
+    +int useroffset
+    +int usersize
+    +int freeptr_offset
+    +bool use_freeptr_offset
+    +int sheaf_capacity
+    --
+    struct kmem_cache_args - Less common arguments for...
+}
+
+@enduml

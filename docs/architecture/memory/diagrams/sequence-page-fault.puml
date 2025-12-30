@@ -1,0 +1,61 @@
+@startuml Page_Fault
+title Page Fault Handling Flow
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+
+participant "CPU" as cpu #LightBlue
+participant "page_fault_handler" as pf #LightGreen
+participant "handle_mm_fault" as mmf #LightYellow
+participant "VMA" as vma #LightPink
+participant "Page Allocator" as alloc #LightGray
+participant "Page Tables" as pt #Wheat
+
+cpu -> pf: #PF exception
+activate pf
+
+pf -> pf: get fault address (CR2)
+pf -> pf: find_vma(mm, address)
+
+alt VMA not found
+    pf --> cpu: SIGSEGV
+else VMA found
+    pf -> mmf: handle_mm_fault(vma, address, flags)
+    activate mmf
+    
+    mmf -> vma: vma->vm_ops->fault()
+    activate vma
+    
+    alt Anonymous page
+        vma -> alloc: alloc_pages()
+        activate alloc
+        alloc --> vma: new page
+        deactivate alloc
+        vma -> vma: clear_page() / copy-on-write
+    else File-backed page
+        vma -> vma: filemap_fault()
+        note right: Read from page cache\nor disk
+    end
+    
+    vma --> mmf: page
+    deactivate vma
+    
+    mmf -> pt: set_pte()
+    activate pt
+    pt --> mmf: PTE installed
+    deactivate pt
+    
+    mmf --> pf: VM_FAULT_NOPAGE
+    deactivate mmf
+end
+
+pf --> cpu: return (retry instruction)
+deactivate pf
+
+note over cpu,pt
+    Page fault types:
+    - Minor: page in cache, just map
+    - Major: page on disk, I/O needed
+    - COW: copy-on-write fault
+end note
+@enduml

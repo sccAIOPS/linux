@@ -1,0 +1,22 @@
+@startuml C4_Component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Memory Management - Component Diagram
+
+LAYOUT_WITH_LEGEND()
+
+Container_Boundary(subsys, "Memory Management") {
+    Component(page_allocator, "Page Allocator", "C", "Buddy allocator for pages")
+    Component(slab_allocator, "Slab Allocator", "C", "SLUB/SLAB object allocator")
+    Component(vmalloc, "VMAlloc", "C", "Virtual memory allocation")
+    Component(memory_mapping, "Memory Mapping", "C", "mmap and VMA management")
+    Component(page_cache, "Page Cache", "C", "File-backed page cache")
+    Component(swap, "Swap", "C", "Swap space management")
+}
+
+Rel(page_allocator, slab_allocator, "Uses")
+Rel(slab_allocator, vmalloc, "Uses")
+Rel(vmalloc, memory_mapping, "Uses")
+Rel(memory_mapping, page_cache, "Uses")
+Rel(page_cache, swap, "Uses")
+@enduml

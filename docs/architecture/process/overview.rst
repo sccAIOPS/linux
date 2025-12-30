@@ -1,0 +1,52 @@
+===============================
+Process Management Architecture
+===============================
+
+.. contents:: Table of Contents
+   :depth: 3
+   :local:
+
+Overview
+--------
+
+This document describes the architecture of the Linux kernel's process subsystem.
+
+**Source Paths:**
+
+* ``kernel/sched``
+* ``kernel/fork.c``
+* ``kernel/exit.c``
+* ``kernel/signal.c``
+
+**Key Headers:**
+
+* ``include/linux/sched.h``
+* ``include/linux/sched/signal.h``
+
+Architecture Diagram
+--------------------
+
+.. uml:: diagrams/c4-container.puml
+
+Components
+----------
+
+See :doc:`components` for detailed component breakdown.
+
+Data Structures
+---------------
+
+See :doc:`data-structures` for key data structure documentation.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   components
+   data-structures
+
+Generated
+---------
+
+This documentation was auto-generated on 2025-12-30 19:22:59.
+

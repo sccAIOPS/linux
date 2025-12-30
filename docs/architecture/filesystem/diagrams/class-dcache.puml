@@ -1,0 +1,35 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct qstr" as qstr <<struct>> {
+}
+
+class "struct dentry" as dentry <<struct>> {
+    +int d_flags
+    +seqcount_spinlock_t d_seq
+    +struct hlist_bl_node d_hash
+    +struct dentry * d_parent
+    -struct qstr __d_name
+    +struct qstr d_name
+}
+
+class "struct dentry_operations" as dentry_operations <<struct>> {
+}
+
+class "struct name_snapshot" as name_snapshot <<struct>> {
+    +struct qstr name
+    +union shortname_store inline_name
+}
+
+dentry *-- qstr : __d_name
+dentry *-- qstr : d_name
+name_snapshot *-- qstr : name
+@enduml

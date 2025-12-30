@@ -1,0 +1,113 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct page" as page <<struct>> {
+    +memdesc_flags_t flags
+    +struct list_head lru
+    +struct list_head buddy_list
+    +struct list_head pcp_list
+    +struct llist_node pcp_llist
+}
+
+class "struct folio" as folio <<struct>> {
+    +memdesc_flags_t flags
+    +struct list_head lru
+    -void * __filler
+    +int mlock_count
+    --
+    struct folio - Represents a contiguous set of byte...
+}
+
+class "struct ptdesc" as ptdesc <<struct>> {
+    +memdesc_flags_t pt_flags
+    +struct rcu_head pt_rcu_head
+    +struct list_head pt_list
+    -long _pt_pad_1
+    +pgtable_t pmd_huge_pte
+    --
+    struct ptdesc -    Memory descriptor for page tabl...
+}
+
+class "struct vm_region" as vm_region <<struct>> {
+    +struct rb_node vm_rb
+    +vm_flags_t vm_flags
+    +long vm_start
+    +long vm_end
+    +long vm_top
+    +long vm_pgoff
+    +struct file * vm_file
+    +int vm_usage
+    +bool vm_icache_flushed
+}
+
+class "struct vm_userfaultfd_ctx" as vm_userfaultfd_ctx <<struct>> {
+}
+
+class "struct anon_vma_name" as anon_vma_name <<struct>> {
+    +struct kref kref
+    +char name
+}
+
+class "struct vma_numab_state" as vma_numab_state <<struct>> {
+    +long next_scan
+    +long pids_active_reset
+    +long[2] pids_active
+    +int start_scan_seq
+    +int prev_scan_seq
+}
+
+class "struct pfnmap_track_ctx" as pfnmap_track_ctx <<struct>> {
+    +struct kref kref
+    +long pfn
+    +long size
+}
+
+class "struct mmap_action" as mmap_action <<struct>> {
+    +long start
+    +long start_pfn
+    +long size
+    +pgprot_t pgprot
+}
+
+class "struct vm_area_desc" as vm_area_desc <<struct>> {
+    +long start
+    +long end
+    +pgoff_t pgoff
+    +struct file * vm_file
+    +vm_flags_t vm_flags
+    +vma_flags_t vma_flags
+}
+
+class "struct vm_area_struct" as vm_area_struct <<struct>> {
+    +long vm_start
+    +long vm_end
+}
+
+class "struct mm_struct" as mm_struct <<struct>> {
+    +atomic_t mm_count
+}
+
+class "struct lru_gen_mm_list" as lru_gen_mm_list <<struct>> {
+    +struct list_head fifo
+    +spinlock_t lock
+}
+
+class "struct vma_iterator" as vma_iterator <<struct>> {
+    +struct ma_state mas
+}
+
+class "struct vm_special_mapping" as vm_special_mapping <<struct>> {
+    +char * name
+    +struct page * pages
+}
+
+vm_special_mapping --> page : pages
+@enduml

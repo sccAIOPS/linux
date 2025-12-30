@@ -1,0 +1,60 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct vm_fault" as vm_fault <<struct>> {
+    +struct vm_area_struct * vma
+    +gfp_t gfp_mask
+    +pgoff_t pgoff
+    +long address
+    +long real_address
+}
+
+class "struct vm_operations_struct" as vm_operations_struct <<struct>> {
+}
+
+class "struct zap_details" as zap_details <<struct>> {
+    +struct folio * single_folio
+    +bool even_cows
+    +bool reclaim_pt
+    +zap_flags_t zap_flags
+}
+
+class "struct follow_pfnmap_args" as follow_pfnmap_args <<struct>> {
+    +struct vm_area_struct * vma
+    +long address
+    +spinlock_t * lock
+    +pte_t * ptep
+    +long pfn
+    +long addr_mask
+    +pgprot_t pgprot
+    +bool writable
+    +bool special
+}
+
+class "struct vm_unmapped_area_info" as vm_unmapped_area_info <<struct>> {
+    +long flags
+    +long length
+    +long low_limit
+    +long high_limit
+    +long align_mask
+    +long align_offset
+    +long start_gap
+}
+
+class "struct page_snapshot" as page_snapshot <<struct>> {
+    +struct folio folio_snapshot
+    +struct page page_snapshot
+    +long pfn
+    +long idx
+    +long flags
+}
+
+@enduml

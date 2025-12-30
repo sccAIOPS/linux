@@ -1,0 +1,61 @@
+@startuml Fork_Flow
+title Process Fork Flow
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+
+participant "Parent Process" as parent #LightBlue
+participant "sys_fork" as sysfork #LightGreen
+participant "kernel_clone" as clone #LightYellow
+participant "copy_process" as copy #LightPink
+participant "Scheduler" as sched #LightGray
+
+parent -> sysfork: fork()
+activate sysfork
+
+sysfork -> clone: kernel_clone(SIGCHLD, ...)
+activate clone
+
+clone -> copy: copy_process(clone_flags)
+activate copy
+
+copy -> copy: dup_task_struct()
+note right: Allocate new task_struct
+
+copy -> copy: copy_creds()
+note right: Copy credentials
+
+copy -> copy: copy_mm()
+note right: Copy/share memory
+
+copy -> copy: copy_files()
+note right: Copy file descriptors
+
+copy -> copy: copy_fs()
+note right: Copy filesystem info
+
+copy -> copy: copy_signal()
+copy -> copy: copy_sighand()
+
+copy --> clone: new task_struct
+deactivate copy
+
+clone -> sched: wake_up_new_task(p)
+activate sched
+sched -> sched: activate_task()
+sched --> clone: task queued
+deactivate sched
+
+clone --> sysfork: child pid
+deactivate clone
+
+sysfork --> parent: pid (parent) / 0 (child)
+deactivate sysfork
+
+note over parent,sched
+    After fork:
+    - Parent returns child PID
+    - Child returns 0
+    - Both continue from fork() return
+end note
+@enduml

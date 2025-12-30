@@ -1,0 +1,24 @@
+@startuml C4_Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Memory Management - Container Diagram
+
+LAYOUT_WITH_LEGEND()
+
+System_Boundary(subsys, "Memory Management") {
+    Container(page_allocator, "Page Allocator", "C", "Buddy allocator for pages")
+    Container(slab_allocator, "Slab Allocator", "C", "SLUB/SLAB object allocator")
+    Container(vmalloc, "VMAlloc", "C", "Virtual memory allocation")
+    Container(memory_mapping, "Memory Mapping", "C", "mmap and VMA management")
+    Container(page_cache, "Page Cache", "C", "File-backed page cache")
+    Container(swap, "Swap", "C", "Swap space management")
+}
+
+System_Ext(other, "Other Subsystems")
+
+Rel(page_allocator, slab_allocator, "Calls")
+Rel(slab_allocator, vmalloc, "Calls")
+Rel(vmalloc, memory_mapping, "Calls")
+Rel(memory_mapping, page_cache, "Calls")
+Rel(page_cache, swap, "Calls")
+@enduml

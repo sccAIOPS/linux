@@ -1,0 +1,1168 @@
+# Symbols for process subsystem
+# Generated: 2025-12-30 19:22:59
+
+============================================================
+ Linux Kernel Architecture Extractor
+ Script: extract_symbols.sh
+ Time: 2025-12-30 19:22:59
+============================================================
+
+==============================
+Summary for: kernel/sched
+==============================
+C Files:      33
+Header Files: 12
+Total Lines:  62164
+Functions:    2118
+Structures:   80
+==============================
+
+
+=== FUNCTIONS ===
+cgroup_move_task                         kernel/sched/psi.c                                  1155  exported=no static=no
+psi_account_irqtime                      kernel/sched/psi.c                                  1006  exported=no static=no
+psi_cgroup_alloc                         kernel/sched/psi.c                                  1112  exported=no static=no
+psi_cgroup_free                          kernel/sched/psi.c                                  1131  exported=no static=no
+psi_cgroup_restart                       kernel/sched/psi.c                                  1210  exported=no static=no
+psi_init                                 kernel/sched/psi.c                                   228  exported=no static=no
+psi_memstall_enter                       kernel/sched/psi.c                                  1056  exported=yes static=no
+psi_memstall_leave                       kernel/sched/psi.c                                  1087  exported=yes static=no
+psi_show                                 kernel/sched/psi.c                                  1245  exported=no static=no
+psi_task_change                          kernel/sched/psi.c                                   909  exported=no static=no
+psi_task_switch                          kernel/sched/psi.c                                   926  exported=no static=no
+psi_trigger_create                       kernel/sched/psi.c                                  1295  exported=no static=no
+psi_trigger_destroy                      kernel/sched/psi.c                                  1397  exported=no static=no
+psi_trigger_poll                         kernel/sched/psi.c                                  1482  exported=no static=no
+arch_cpu_idle                            kernel/sched/idle.c                                   84  exported=no static=no
+arch_cpu_idle_dead                       kernel/sched/idle.c                                   83  exported=no static=no
+arch_cpu_idle_enter                      kernel/sched/idle.c                                   81  exported=no static=no
+arch_cpu_idle_exit                       kernel/sched/idle.c                                   82  exported=no static=no
+arch_cpu_idle_prepare                    kernel/sched/idle.c                                   80  exported=no static=no
+balance_idle                             kernel/sched/idle.c                                  444  exported=no static=no
+cpu_idle_poll_ctrl                       kernel/sched/idle.c                                   29  exported=no static=no
+cpu_in_idle                              kernel/sched/idle.c                                  366  exported=no static=no
+cpu_startup_entry                        kernel/sched/idle.c                                  424  exported=no static=no
+default_idle_call                        kernel/sched/idle.c                                  113  exported=no static=no
+dequeue_task_idle                        kernel/sched/idle.c                                  484  exported=no static=no
+pick_task_idle                           kernel/sched/idle.c                                  473  exported=no static=no
+play_idle_precise                        kernel/sched/idle.c                                  387  exported=yes static=no
+prio_changed_idle                        kernel/sched/idle.c                                  512  exported=no static=no
+sched_idle_set_state                     kernel/sched/idle.c                                   22  exported=no static=no
+select_task_rq_idle                      kernel/sched/idle.c                                  438  exported=no static=no
+dirty_sched_domain_sysctl                kernel/sched/debug.c                                 638  exported=no static=no
+print_cfs_rq                             kernel/sched/debug.c                                 797  exported=no static=no
+print_dl_rq                              kernel/sched/debug.c                                 904  exported=no static=no
+print_numa_stats                         kernel/sched/debug.c                                1121  exported=no static=no
+print_rt_rq                              kernel/sched/debug.c                                 874  exported=no static=no
+print_task                               kernel/sched/debug.c                                 727  exported=no static=no
+proc_sched_set_task                      kernel/sched/debug.c                                1267  exported=no static=no
+proc_sched_show_task                     kernel/sched/debug.c                                1146  exported=no static=no
+resched_latency_warn                     kernel/sched/debug.c                                1274  exported=no static=no
+sched_fair_server_period_write           kernel/sched/debug.c                                 444  exported=no static=no
+sched_fair_server_runtime_write          kernel/sched/debug.c                                 419  exported=no static=no
+sched_feat_write                         kernel/sched/debug.c                                 127  exported=no static=no
+sysrq_sched_debug_show                   kernel/sched/debug.c                                1048  exported=no static=no
+update_sched_domain_debugfs              kernel/sched/debug.c                                 586  exported=no static=no
+__add_rq_bw                              kernel/sched/deadline.c                              238  exported=no static=no
+__add_running_bw                         kernel/sched/deadline.c                              211  exported=no static=no
+__checkparam_dl                          kernel/sched/deadline.c                             3583  exported=no static=no
+__dl_add                                 kernel/sched/deadline.c                              197  exported=no static=no
+__dl_overflow                            kernel/sched/deadline.c                              204  exported=no static=no
+__dl_server_attach_root                  kernel/sched/deadline.c                             1850  exported=no static=no
+__dl_sub                                 kernel/sched/deadline.c                              190  exported=no static=no
+__dl_update                              kernel/sched/deadline.c                              175  exported=no static=no
+__getparam_dl                            kernel/sched/deadline.c                             3561  exported=no static=no
+__schedstats_from_dl_se                  kernel/sched/deadline.c                             2067  exported=no static=no
+__setparam_dl                            kernel/sched/deadline.c                             3549  exported=no static=no
+__sub_rq_bw                              kernel/sched/deadline.c                              248  exported=no static=no
+__sub_running_bw                         kernel/sched/deadline.c                              224  exported=no static=no
+add_rq_bw                                kernel/sched/deadline.c                              261  exported=no static=no
+add_running_bw                           kernel/sched/deadline.c                              275  exported=no static=no
+cancel_dl_timer                          kernel/sched/deadline.c                              311  exported=no static=no
+cancel_inactive_timer                    kernel/sched/deadline.c                              328  exported=no static=no
+cancel_replenish_timer                   kernel/sched/deadline.c                              322  exported=no static=no
+dec_dl_tasks                             kernel/sched/deadline.c                             2050  exported=no static=no
+dl_add_task_root_domain                  kernel/sched/deadline.c                             3151  exported=no static=no
+dl_bw_alloc                              kernel/sched/deadline.c                             3774  exported=no static=no
+dl_bw_deactivate                         kernel/sched/deadline.c                             3769  exported=no static=no
+dl_bw_free                               kernel/sched/deadline.c                             3779  exported=no static=no
+dl_bw_visited                            kernel/sched/deadline.c                              163  exported=no static=no
+dl_clear_root_domain                     kernel/sched/deadline.c                             3186  exported=no static=no
+dl_clear_root_domain_cpu                 kernel/sched/deadline.c                             3212  exported=no static=no
+dl_cpuset_cpumask_can_shrink             kernel/sched/deadline.c                             3672  exported=no static=no
+dl_param_changed                         kernel/sched/deadline.c                             3659  exported=no static=no
+dl_runtime_exceeded                      kernel/sched/deadline.c                             1351  exported=no static=no
+dl_scaled_delta_exec                     kernel/sched/deadline.c                             1393  exported=no static=no
+dl_server_apply_params                   kernel/sched/deadline.c                             1865  exported=no static=no
+dl_server_init                           kernel/sched/deadline.c                             1817  exported=no static=no
+dl_server_start                          kernel/sched/deadline.c                             1783  exported=no static=no
+dl_server_stop                           kernel/sched/deadline.c                             1804  exported=no static=no
+dl_server_update                         kernel/sched/deadline.c                             1582  exported=no static=no
+dl_server_update_idle                    kernel/sched/deadline.c                             1576  exported=no static=no
+enqueue_dl_entity                        kernel/sched/deadline.c                             2162  exported=no static=no
+inc_dl_tasks                             kernel/sched/deadline.c                             2037  exported=no static=no
+init_dl_bw                               kernel/sched/deadline.c                              506  exported=no static=no
+init_dl_entity                           kernel/sched/deadline.c                             3651  exported=no static=no
+init_dl_rq                               kernel/sched/deadline.c                              516  exported=no static=no
+init_sched_dl_class                      kernel/sched/deadline.c                             3112  exported=no static=no
+print_dl_stats                           kernel/sched/deadline.c                             3784  exported=no static=no
+sched_dl_do_global                       kernel/sched/deadline.c                             3443  exported=no static=no
+sched_dl_global_validate                 kernel/sched/deadline.c                             3391  exported=no static=no
+sched_dl_overflow                        kernel/sched/deadline.c                             3483  exported=no static=no
+sched_init_dl_servers                    kernel/sched/deadline.c                             1824  exported=no static=no
+select_task_rq_dl                        kernel/sched/deadline.c                             2380  exported=no static=no
+sub_rq_bw                                kernel/sched/deadline.c                              268  exported=no static=no
+sub_running_bw                           kernel/sched/deadline.c                              282  exported=no static=no
+update_dl_revised_wakeup                 kernel/sched/deadline.c                              964  exported=no static=no
+update_stats_dequeue_dl                  kernel/sched/deadline.c                             2114  exported=no static=no
+update_stats_enqueue_dl                  kernel/sched/deadline.c                             2103  exported=no static=no
+update_stats_enqueue_sleeper_dl          kernel/sched/deadline.c                             2095  exported=no static=no
+update_stats_wait_end_dl                 kernel/sched/deadline.c                             2087  exported=no static=no
+update_stats_wait_start_dl               kernel/sched/deadline.c                             2079  exported=no static=no
+___migrate_enable                        kernel/sched/core.c                                 2354  exported=yes static=no
+__cant_migrate                           kernel/sched/core.c                                 8861  exported=yes static=no
+__cant_sleep                             kernel/sched/core.c                                 8832  exported=yes static=no
+__cond_resched                           kernel/sched/core.c                                 7373  exported=yes static=no
+__cond_resched_lock                      kernel/sched/core.c                                 7440  exported=yes static=no
+__cond_resched_rwlock_read               kernel/sched/core.c                                 7458  exported=yes static=no
+__cond_resched_rwlock_write              kernel/sched/core.c                                 7476  exported=yes static=no
+__fire_sched_out_preempt_notifiers       kernel/sched/core.c                                 4829  exported=no static=no
+__might_resched                          kernel/sched/core.c                                 8781  exported=yes static=no
+__might_sleep                            kernel/sched/core.c                                 8742  exported=yes static=no
+__pick_next_task                         kernel/sched/core.c                                 5867  exported=no static=no
+__set_cpus_allowed_ptr                   kernel/sched/core.c                                 3075  exported=no static=no
+__setscheduler_class                     kernel/sched/core.c                                 7206  exported=no static=no
+__splice_balance_callbacks               kernel/sched/core.c                                 4924  exported=no static=no
+__task_rq_lock                           kernel/sched/core.c                                  706  exported=no static=no
+__task_state_match                       kernel/sched/core.c                                 2191  exported=no static=no
+__trace_set_current_state                kernel/sched/core.c                                  529  exported=yes static=no
+__trace_set_need_resched                 kernel/sched/core.c                                 1135  exported=no static=no
+activate_task                            kernel/sched/core.c                                 2130  exported=no static=no
+balance_callbacks                        kernel/sched/core.c                                 4958  exported=no static=no
+call_function_single_prep_ipi            kernel/sched/core.c                                 3753  exported=no static=no
+call_trace_sched_update_nr_running       kernel/sched/core.c                                10256  exported=no static=no
+capacity_from_percent                    kernel/sched/core.c                                 9293  exported=no static=no
+context_switch                           kernel/sched/core.c                                 5198  exported=no static=no
+cpu_cgroup_css_alloc                     kernel/sched/core.c                                 9130  exported=no static=no
+cpu_curr_snapshot                        kernel/sched/core.c                                 4321  exported=no static=no
+cpus_equal_capacity                      kernel/sched/core.c                                 3793  exported=no static=no
+cpus_share_cache                         kernel/sched/core.c                                 3804  exported=no static=no
+cpus_share_resources                     kernel/sched/core.c                                 3816  exported=no static=no
+cpuset_cpumask_can_shrink                kernel/sched/core.c                                 7946  exported=no static=no
+curr_task                                kernel/sched/core.c                                 8951  exported=no static=no
+deactivate_task                          kernel/sched/core.c                                 2141  exported=no static=no
+default_wake_function                    kernel/sched/core.c                                 7198  exported=yes static=no
+dequeue_task                             kernel/sched/core.c                                 2108  exported=no static=no
+do_set_cpus_allowed                      kernel/sched/core.c                                 2669  exported=no static=no
+do_task_dead                             kernel/sched/core.c                                 6876  exported=no static=no
+double_rq_lock                           kernel/sched/core.c                                  689  exported=no static=no
+dump_cpu_task                            kernel/sched/core.c                                10196  exported=no static=no
+dup_user_cpus_ptr                        kernel/sched/core.c                                 2702  exported=no static=no
+dynamic_cond_resched                     kernel/sched/core.c                                 7413  exported=yes static=no
+dynamic_might_resched                    kernel/sched/core.c                                 7422  exported=yes static=no
+dynamic_preempt_schedule                 kernel/sched/core.c                                 7086  exported=yes static=no
+dynamic_preempt_schedule_notrace         kernel/sched/core.c                                 7159  exported=yes static=no
+enqueue_task                             kernel/sched/core.c                                 2081  exported=no static=no
+find_proxy_task                          kernel/sched/core.c                                 6549  exported=no static=no
+find_proxy_task                          kernel/sched/core.c                                 6655  exported=no static=no
+fire_sched_out_preempt_notifiers         kernel/sched/core.c                                 4839  exported=no static=no
+fire_sched_out_preempt_notifiers         kernel/sched/core.c                                 4853  exported=no static=no
+force_compatible_cpus_allowed_ptr        kernel/sched/core.c                                 3155  exported=no static=no
+force_schedstat_enabled                  kernel/sched/core.c                                 4491  exported=no static=no
+get_nohz_timer_target                    kernel/sched/core.c                                 1191  exported=no static=no
+get_wchan                                kernel/sched/core.c                                 2062  exported=no static=no
+hrtick_start                             kernel/sched/core.c                                  913  exported=no static=no
+in_sched_functions                       kernel/sched/core.c                                 8524  exported=no static=no
+init_idle                                kernel/sched/core.c                                 7886  exported=no static=no
+io_schedule                              kernel/sched/core.c                                 7784  exported=yes static=no
+io_schedule_finish                       kernel/sched/core.c                                 7762  exported=no static=no
+io_schedule_prepare                      kernel/sched/core.c                                 7753  exported=no static=no
+io_schedule_timeout                      kernel/sched/core.c                                 7771  exported=yes static=no
+kick_process                             kernel/sched/core.c                                 3391  exported=yes static=no
+migrate_disable                          kernel/sched/core.c                                 2366  exported=yes static=no
+migrate_enable                           kernel/sched/core.c                                 2372  exported=yes static=no
+migrate_swap                             kernel/sched/core.c                                 3341  exported=no static=no
+migrate_task_to                          kernel/sched/core.c                                 7982  exported=no static=no
+mm_init_cid                              kernel/sched/core.c                                10738  exported=no static=no
+normalize_rt_tasks                       kernel/sched/core.c                                 8895  exported=no static=no
+nr_context_switches                      kernel/sched/core.c                                 5302  exported=no static=no
+nr_context_switches_cpu                  kernel/sched/core.c                                 5297  exported=no static=no
+nr_iowait                                kernel/sched/core.c                                 5355  exported=no static=no
+nr_iowait_cpu                            kernel/sched/core.c                                 5320  exported=no static=no
+nr_running                               kernel/sched/core.c                                 5268  exported=no static=no
+pick_next_task                           kernel/sched/core.c                                 5967  exported=no static=no
+pick_next_task                           kernel/sched/core.c                                 6420  exported=no static=no
+preempt_count_add                        kernel/sched/core.c                                 5713  exported=yes static=no
+preempt_count_sub                        kernel/sched/core.c                                 5745  exported=yes static=no
+preempt_model_str                        kernel/sched/core.c                                 7712  exported=no static=no
+preempt_notifier_dec                     kernel/sched/core.c                                 4783  exported=yes static=no
+preempt_notifier_inc                     kernel/sched/core.c                                 4777  exported=yes static=no
+preempt_notifier_register                kernel/sched/core.c                                 4793  exported=yes static=no
+preempt_notifier_unregister              kernel/sched/core.c                                 4808  exported=yes static=no
+preempt_schedule                         kernel/sched/core.c                                 7063  exported=yes static=no
+preempt_schedule_irq                     kernel/sched/core.c                                 7178  exported=no static=no
+preempt_schedule_notrace                 kernel/sched/core.c                                 7111  exported=yes static=no
+prepare_lock_switch                      kernel/sched/core.c                                 4970  exported=no static=no
+prepare_task_switch                      kernel/sched/core.c                                 5040  exported=no static=no
+push_cpu_stop                            kernel/sched/core.c                                 2603  exported=no static=no
+raw_spin_rq_lock_nested                  kernel/sched/core.c                                  632  exported=no static=no
+raw_spin_rq_trylock                      kernel/sched/core.c                                  657  exported=no static=no
+raw_spin_rq_unlock                       kernel/sched/core.c                                  681  exported=no static=no
+relax_compatible_cpus_allowed_ptr        kernel/sched/core.c                                 3201  exported=no static=no
+release_user_cpus_ptr                    kernel/sched/core.c                                 2754  exported=no static=no
+resched_cpu                              kernel/sched/core.c                                 1171  exported=no static=no
+resched_curr                             kernel/sched/core.c                                 1140  exported=no static=no
+resched_curr_lazy                        kernel/sched/core.c                                 1166  exported=no static=no
+rt_mutex_post_schedule                   kernel/sched/core.c                                 7244  exported=no static=no
+rt_mutex_pre_schedule                    kernel/sched/core.c                                 7232  exported=no static=no
+rt_mutex_schedule                        kernel/sched/core.c                                 7238  exported=no static=no
+rt_mutex_setprio                         kernel/sched/core.c                                 7261  exported=no static=no
+sched_can_stop_tick                      kernel/sched/core.c                                 1335  exported=no static=no
+sched_cancel_fork                        kernel/sched/core.c                                 4702  exported=no static=no
+sched_cgroup_fork                        kernel/sched/core.c                                 4672  exported=no static=no
+sched_change_begin                       kernel/sched/core.c                                10760  exported=no static=no
+sched_change_end                         kernel/sched/core.c                                10808  exported=no static=no
+sched_core_dequeue                       kernel/sched/core.c                                  312  exported=no static=no
+sched_core_dequeue                       kernel/sched/core.c                                  521  exported=no static=no
+sched_core_enqueue                       kernel/sched/core.c                                  299  exported=no static=no
+sched_core_get                           kernel/sched/core.c                                  480  exported=no static=no
+sched_core_put                           kernel/sched/core.c                                  502  exported=no static=no
+sched_cpu_activate                       kernel/sched/core.c                                 8293  exported=no static=no
+sched_cpu_deactivate                     kernel/sched/core.c                                 8331  exported=no static=no
+sched_cpu_dying                          kernel/sched/core.c                                 8463  exported=no static=no
+sched_cpu_starting                       kernel/sched/core.c                                 8399  exported=no static=no
+sched_cpu_wait_empty                     kernel/sched/core.c                                 8420  exported=no static=no
+sched_create_group                       kernel/sched/core.c                                 9001  exported=no static=no
+sched_destroy_group                      kernel/sched/core.c                                 9050  exported=no static=no
+sched_dynamic_mode                       kernel/sched/core.c                                 7551  exported=no static=no
+sched_dynamic_update                     kernel/sched/core.c                                 7649  exported=no static=no
+sched_exec                               kernel/sched/core.c                                 5369  exported=no static=no
+sched_fork                               kernel/sched/core.c                                 4602  exported=no static=no
+sched_init                               kernel/sched/core.c                                 8543  exported=no static=no
+sched_init_smp                           kernel/sched/core.c                                 8488  exported=no static=no
+sched_mm_cid_after_execve                kernel/sched/core.c                                10698  exported=no static=no
+sched_mm_cid_before_execve               kernel/sched/core.c                                10692  exported=no static=no
+sched_mm_cid_exit                        kernel/sched/core.c                                10646  exported=no static=no
+sched_mm_cid_fork                        kernel/sched/core.c                                10564  exported=no static=no
+sched_move_task                          kernel/sched/core.c                                 9108  exported=no static=no
+sched_online_group                       kernel/sched/core.c                                 9025  exported=no static=no
+sched_post_fork                          kernel/sched/core.c                                 4707  exported=no static=no
+sched_release_group                      kernel/sched/core.c                                 9056  exported=no static=no
+sched_set_stop_task                      kernel/sched/core.c                                 3519  exported=no static=no
+sched_setnuma                            kernel/sched/core.c                                 8003  exported=no static=no
+sched_show_task                          kernel/sched/core.c                                 7794  exported=yes static=no
+sched_task_on_rq                         kernel/sched/core.c                                 2057  exported=no static=no
+sched_tick                               kernel/sched/core.c                                 5504  exported=no static=no
+sched_tick_offload_init                  kernel/sched/core.c                                 5684  exported=no static=no
+sched_ttwu_pending                       kernel/sched/core.c                                 3710  exported=no static=no
+schedule                                 kernel/sched/core.c                                 6950  exported=yes static=no
+schedule_idle                            kernel/sched/core.c                                 6975  exported=no static=no
+schedule_preempt_disabled                kernel/sched/core.c                                 7014  exported=no static=no
+schedule_rtlock                          kernel/sched/core.c                                 7022  exported=no static=no
+schedule_tail                            kernel/sched/core.c                                 5167  exported=no static=no
+schedule_user                            kernel/sched/core.c                                 6991  exported=no static=no
+select_task_rq                           kernel/sched/core.c                                 3492  exported=no static=no
+set_cpus_allowed_common                  kernel/sched/core.c                                 2650  exported=no static=no
+set_cpus_allowed_force                   kernel/sched/core.c                                 2679  exported=no static=no
+set_cpus_allowed_ptr                     kernel/sched/core.c                                 3093  exported=yes static=no
+set_load_weight                          kernel/sched/core.c                                 1433  exported=no static=no
+set_numabalancing_state                  kernel/sched/core.c                                 4431  exported=no static=no
+set_rq_offline                           kernel/sched/core.c                                 8192  exported=no static=no
+set_rq_online                            kernel/sched/core.c                                 8177  exported=no static=no
+set_task_cpu                             kernel/sched/core.c                                 3219  exported=no static=no
+show_state_filter                        kernel/sched/core.c                                 7848  exported=no static=no
+single_task_running                      kernel/sched/core.c                                 5291  exported=yes static=no
+splice_balance_callbacks                 kernel/sched/core.c                                 4948  exported=no static=no
+state_filter_match                       kernel/sched/core.c                                 7825  exported=no static=no
+task_call_func                           kernel/sched/core.c                                 4274  exported=no static=no
+task_can_attach                          kernel/sched/core.c                                 7959  exported=no static=no
+task_curr                                kernel/sched/core.c                                 2168  exported=no static=no
+task_rq_lock                             kernel/sched/core.c                                  730  exported=no static=no
+task_sched_runtime                       kernel/sched/core.c                                 5416  exported=no static=no
+task_state_match                         kernel/sched/core.c                                 2203  exported=no static=no
+tg_nop                                   kernel/sched/core.c                                 1427  exported=no static=no
+to_ratio                                 kernel/sched/core.c                                 4713  exported=no static=no
+try_to_wake_up                           kernel/sched/core.c                                 4068  exported=no static=no
+ttwu_do_activate                         kernel/sched/core.c                                 3611  exported=no static=no
+ttwu_stat                                kernel/sched/core.c                                 3565  exported=no static=no
+ttwu_state_match                         kernel/sched/core.c                                 3917  exported=no static=no
+uclamp_eff_get                           kernel/sched/core.c                                 1626  exported=no static=no
+uclamp_eff_value                         kernel/sched/core.c                                 1638  exported=no static=no
+uclamp_idle_value                        kernel/sched/core.c                                 1516  exported=no static=no
+uclamp_rq_max_value                      kernel/sched/core.c                                 1543  exported=no static=no
+uclamp_tg_restrict                       kernel/sched/core.c                                 1591  exported=no static=no
+uclamp_update_active                     kernel/sched/core.c                                 1834  exported=no static=no
+uclamp_update_active_tasks               kernel/sched/core.c                                 1864  exported=no static=no
+update_rq_clock                          kernel/sched/core.c                                  832  exported=no static=no
+wait_task_inactive                       kernel/sched/core.c                                 2229  exported=no static=no
+wake_q_add                               kernel/sched/core.c                                 1041  exported=no static=no
+wake_q_add_safe                          kernel/sched/core.c                                 1064  exported=no static=no
+wake_up_if_idle                          kernel/sched/core.c                                 3781  exported=no static=no
+wake_up_new_task                         kernel/sched/core.c                                 4736  exported=no static=no
+wake_up_nohz_cpu                         kernel/sched/core.c                                 1293  exported=no static=no
+wake_up_process                          kernel/sched/core.c                                 4347  exported=yes static=no
+wake_up_q                                kernel/sched/core.c                                 1070  exported=no static=no
+wake_up_state                            kernel/sched/core.c                                 4353  exported=no static=no
+wakeup_preempt                           kernel/sched/core.c                                 2173  exported=no static=no
+walk_tg_tree_from                        kernel/sched/core.c                                 1396  exported=no static=no
+__init_waitqueue_head                    kernel/sched/wait.c                                    9  exported=yes static=no
+__wake_up                                kernel/sched/wait.c                                  143  exported=yes static=no
+__wake_up_locked                         kernel/sched/wait.c                                  158  exported=yes static=no
+__wake_up_locked_key                     kernel/sched/wait.c                                  164  exported=yes static=no
+__wake_up_locked_sync_key                kernel/sched/wait.c                                  212  exported=yes static=no
+__wake_up_on_current_cpu                 kernel/sched/wait.c                                  150  exported=no static=no
+__wake_up_pollfree                       kernel/sched/wait.c                                  228  exported=no static=no
+__wake_up_sync                           kernel/sched/wait.c                                  222  exported=yes static=no
+__wake_up_sync_key                       kernel/sched/wait.c                                  186  exported=yes static=no
+add_wait_queue                           kernel/sched/wait.c                                   18  exported=yes static=no
+add_wait_queue_exclusive                 kernel/sched/wait.c                                   29  exported=yes static=no
+add_wait_queue_priority                  kernel/sched/wait.c                                   40  exported=yes static=no
+add_wait_queue_priority_exclusive        kernel/sched/wait.c                                   51  exported=yes static=no
+autoremove_wake_function                 kernel/sched/wait.c                                  401  exported=yes static=no
+do_wait_intr                             kernel/sched/wait.c                                  332  exported=yes static=no
+do_wait_intr_irq                         kernel/sched/wait.c                                  349  exported=yes static=no
+finish_wait                              kernel/sched/wait.c                                  375  exported=yes static=no
+init_wait_entry                          kernel/sched/wait.c                                  280  exported=yes static=no
+prepare_to_wait                          kernel/sched/wait.c                                  248  exported=yes static=no
+prepare_to_wait_event                    kernel/sched/wait.c                                  289  exported=yes static=no
+prepare_to_wait_exclusive                kernel/sched/wait.c                                  263  exported=yes static=no
+remove_wait_queue                        kernel/sched/wait.c                                   69  exported=yes static=no
+wait_woken                               kernel/sched/wait.c                                  432  exported=yes static=no
+woken_wake_function                      kernel/sched/wait.c                                  457  exported=yes static=no
+__entity_slice_used                      kernel/sched/fair.c                                13071  exported=no static=no
+__pick_first_entity                      kernel/sched/fair.c                                  848  exported=no static=no
+__pick_last_entity                       kernel/sched/fair.c                                  994  exported=no static=no
+__pick_root_entity                       kernel/sched/fair.c                                  838  exported=no static=no
+__refill_cfs_bandwidth_runtime           kernel/sched/fair.c                                 5592  exported=no static=no
+__setparam_fair                          kernel/sched/fair.c                                 5086  exported=no static=no
+__update_idle_core                       kernel/sched/fair.c                                 7532  exported=no static=no
+account_cfs_rq_runtime                   kernel/sched/fair.c                                 5675  exported=no static=no
+account_entity_dequeue                   kernel/sched/fair.c                                 3677  exported=no static=no
+account_entity_enqueue                   kernel/sched/fair.c                                 3664  exported=no static=no
+adjust_numa_imbalance                    kernel/sched/fair.c                                 1392  exported=no static=no
+alloc_fair_sched_group                   kernel/sched/fair.c                                13622  exported=no static=no
+arch_asym_cpu_priority                   kernel/sched/fair.c                                   94  exported=no static=no
+asym_active_balance                      kernel/sched/fair.c                                11638  exported=no static=no
+avg_vruntime                             kernel/sched/fair.c                                  654  exported=no static=no
+avg_vruntime_add                         kernel/sched/fair.c                                  622  exported=no static=no
+avg_vruntime_sub                         kernel/sched/fair.c                                  632  exported=no static=no
+avg_vruntime_update                      kernel/sched/fair.c                                  642  exported=no static=no
+can_migrate_task                         kernel/sched/fair.c                                 9432  exported=no static=no
+cfs_bandwidth_usage_dec                  kernel/sched/fair.c                                 5566  exported=no static=no
+cfs_bandwidth_usage_dec                  kernel/sched/fair.c                                 5577  exported=no static=no
+cfs_bandwidth_usage_inc                  kernel/sched/fair.c                                 5561  exported=no static=no
+cfs_bandwidth_usage_inc                  kernel/sched/fair.c                                 5576  exported=no static=no
+cfs_prio_less                            kernel/sched/fair.c                                13296  exported=no static=no
+cfs_task_bw_constrained                  kernel/sched/fair.c                                 6639  exported=no static=no
+cfs_task_bw_constrained                  kernel/sched/fair.c                                 6725  exported=no static=no
+check_cpu_capacity                       kernel/sched/fair.c                                10136  exported=no static=no
+compute_energy                           kernel/sched/fair.c                                 8265  exported=no static=no
+cpu_util                                 kernel/sched/fair.c                                 7942  exported=no static=no
+cpu_util_cfs                             kernel/sched/fair.c                                 8006  exported=no static=no
+cpu_util_cfs_boost                       kernel/sched/fair.c                                 8011  exported=no static=no
+dequeue_entity                           kernel/sched/fair.c                                 5348  exported=no static=no
+dequeue_load_avg                         kernel/sched/fair.c                                 3743  exported=no static=no
+eenv_pd_max_util                         kernel/sched/fair.c                                 8218  exported=no static=no
+effective_cpu_util                       kernel/sched/fair.c                                 8058  exported=no static=no
+enqueue_entity                           kernel/sched/fair.c                                 5217  exported=no static=no
+enqueue_load_avg                         kernel/sched/fair.c                                 3736  exported=no static=no
+enqueue_task_fair                        kernel/sched/fair.c                                 6877  exported=no static=no
+entity_eligible                          kernel/sched/fair.c                                  738  exported=no static=no
+entity_tick                              kernel/sched/fair.c                                 5521  exported=no static=no
+fair_server_init                         kernel/sched/fair.c                                 9013  exported=no static=no
+fair_server_pick_task                    kernel/sched/fair.c                                 9008  exported=no static=no
+find_matching_se                         kernel/sched/fair.c                                  424  exported=no static=no
+find_matching_se                         kernel/sched/fair.c                                  499  exported=no static=no
+free_fair_sched_group                    kernel/sched/fair.c                                13607  exported=no static=no
+get_sd_balance_interval                  kernel/sched/fair.c                                12098  exported=no static=no
+group_classify                           kernel/sched/fair.c                                10237  exported=no static=no
+group_has_capacity                       kernel/sched/fair.c                                10195  exported=no static=no
+group_is_overloaded                      kernel/sched/fair.c                                10220  exported=no static=no
+hrtick_start_fair                        kernel/sched/fair.c                                 6777  exported=no static=no
+imbalanced_active_balance                kernel/sched/fair.c                                11656  exported=no static=no
+init_cfs_bandwidth                       kernel/sched/fair.c                                 6492  exported=no static=no
+init_cfs_bandwidth                       kernel/sched/fair.c                                 6713  exported=no static=no
+init_cfs_rq                              kernel/sched/fair.c                                13582  exported=no static=no
+init_cfs_throttle_work                   kernel/sched/fair.c                                 5755  exported=no static=no
+init_entity_runnable_average             kernel/sched/fair.c                                 1056  exported=no static=no
+init_numa_balancing                      kernel/sched/fair.c                                 3529  exported=no static=no
+init_sched_fair_class                    kernel/sched/fair.c                                13969  exported=no static=no
+init_tg_cfs_entry                        kernel/sched/fair.c                                13715  exported=no static=no
+is_same_group                            kernel/sched/fair.c                                  410  exported=no static=no
+nohz_balance_enter_idle                  kernel/sched/fair.c                                12595  exported=no static=no
+nohz_balance_exit_idle                   kernel/sched/fair.c                                12561  exported=no static=no
+nohz_run_idle_balance                    kernel/sched/fair.c                                12806  exported=no static=no
+numa_classify                            kernel/sched/fair.c                                 2050  exported=no static=no
+online_fair_sched_group                  kernel/sched/fair.c                                13663  exported=no static=no
+pick_next_entity                         kernel/sched/fair.c                                 5480  exported=no static=no
+pick_next_task_fair                      kernel/sched/fair.c                                 8921  exported=no static=no
+place_entity                             kernel/sched/fair.c                                 5103  exported=no static=no
+post_init_entity_util_avg                kernel/sched/fair.c                                 1101  exported=no static=no
+preempt_sync                             kernel/sched/fair.c                                 8709  exported=no static=no
+print_cfs_stats                          kernel/sched/fair.c                                13935  exported=no static=no
+prio_changed_fair                        kernel/sched/fair.c                                13401  exported=no static=no
+requeue_delayed_entity                   kernel/sched/fair.c                                 6841  exported=no static=no
+sched_balance_find_dst_group             kernel/sched/fair.c                                10842  exported=no static=no
+sched_balance_find_dst_group_cpu         kernel/sched/fair.c                                 7383  exported=no static=no
+sched_balance_trigger                    kernel/sched/fair.c                                13036  exported=no static=no
+sched_cpu_util                           kernel/sched/fair.c                                 8132  exported=no static=no
+sched_group_asym                         kernel/sched/fair.c                                10307  exported=no static=no
+sched_group_set_idle                     kernel/sched/fair.c                                13798  exported=no static=no
+sched_group_set_shares                   kernel/sched/fair.c                                13784  exported=no static=no
+sched_init_granularity                   kernel/sched/fair.c                                  223  exported=no static=no
+sched_reduced_capacity                   kernel/sched/fair.c                                10386  exported=no static=no
+sched_update_scaling                     kernel/sched/fair.c                                 1007  exported=no static=no
+select_idle_capacity                     kernel/sched/fair.c                                 7708  exported=no static=no
+select_task_rq_fair                      kernel/sched/fair.c                                 8519  exported=no static=no
+set_next_entity                          kernel/sched/fair.c                                 5430  exported=no static=no
+set_preempt_buddy                        kernel/sched/fair.c                                 8687  exported=no static=no
+set_task_rq_fair                         kernel/sched/fair.c                                 4136  exported=no static=no
+should_numa_migrate_memory               kernel/sched/fair.c                                 1889  exported=no static=no
+show_numa_stats                          kernel/sched/fair.c                                13946  exported=no static=no
+start_cfs_bandwidth                      kernel/sched/fair.c                                 6521  exported=no static=no
+task_numa_fault                          kernel/sched/fair.c                                 3134  exported=no static=no
+task_numa_free                           kernel/sched/fair.c                                 3098  exported=no static=no
+task_numa_group_id                       kernel/sched/fair.c                                 1577  exported=no static=no
+task_vruntime_update                     kernel/sched/fair.c                                13286  exported=no static=no
+unregister_fair_sched_group              kernel/sched/fair.c                                13681  exported=no static=no
+unthrottle_cfs_rq                        kernel/sched/fair.c                                 5979  exported=no static=no
+update_cfs_rq_load_avg                   kernel/sched/fair.c                                 4537  exported=no static=no
+update_curr_common                       kernel/sched/fair.c                                 1185  exported=no static=no
+update_group_capacity                    kernel/sched/fair.c                                10075  exported=no static=no
+update_max_interval                      kernel/sched/fair.c                                12222  exported=no static=no
+update_newidle_cost                      kernel/sched/fair.c                                12240  exported=no static=no
+update_next_balance                      kernel/sched/fair.c                                12122  exported=no static=no
+update_stats_curr_start                  kernel/sched/fair.c                                 1359  exported=no static=no
+update_stats_dequeue_fair                kernel/sched/fair.c                                 1327  exported=no static=no
+update_stats_enqueue_fair                kernel/sched/fair.c                                 1310  exported=no static=no
+update_stats_enqueue_sleeper_fair        kernel/sched/fair.c                                 1290  exported=no static=no
+update_stats_wait_end_fair               kernel/sched/fair.c                                 1264  exported=no static=no
+update_stats_wait_start_fair             kernel/sched/fair.c                                 1247  exported=no static=no
+update_tg_cfs_load                       kernel/sched/fair.c                                 4292  exported=no static=no
+update_tg_cfs_runnable                   kernel/sched/fair.c                                 4262  exported=no static=no
+update_tg_cfs_util                       kernel/sched/fair.c                                 4230  exported=no static=no
+wake_affine_idle                         kernel/sched/fair.c                                 7283  exported=no static=no
+wake_affine_weight                       kernel/sched/fair.c                                 7314  exported=no static=no
+__visit_domain_allocation_hell           kernel/sched/topology.c                             1552  exported=no static=no
+alloc_sched_domains                      kernel/sched/topology.c                             2727  exported=no static=no
+arch_update_cpu_topology                 kernel/sched/topology.c                             2722  exported=no static=no
+asym_cpu_capacity_classify               kernel/sched/topology.c                             1390  exported=no static=no
+build_balance_mask                       kernel/sched/topology.c                              911  exported=no static=no
+build_group_from_child_sched_domain      kernel/sched/topology.c                              948  exported=no static=no
+build_overlap_sched_groups               kernel/sched/topology.c                             1025  exported=no static=no
+build_sched_domains                      kernel/sched/topology.c                             2551  exported=no static=no
+build_sched_groups                       kernel/sched/topology.c                             1236  exported=no static=no
+cpu_attach_domain                        kernel/sched/topology.c                              716  exported=no static=no
+cpu_cluster_flags                        kernel/sched/topology.c                             1753  exported=no static=no
+cpu_core_flags                           kernel/sched/topology.c                             1765  exported=no static=no
+cpu_smt_flags                            kernel/sched/topology.c                             1741  exported=no static=no
+find_descended_sibling                   kernel/sched/topology.c                             1000  exported=no static=no
+find_numa_distance                       kernel/sched/topology.c                             1852  exported=no static=no
+free_sched_domains                       kernel/sched/topology.c                             2744  exported=no static=no
+group_balance_cpu                        kernel/sched/topology.c                              799  exported=no static=no
+init_defrootdomain                       kernel/sched/topology.c                              576  exported=no static=no
+partition_sched_domains                  kernel/sched/topology.c                             2936  exported=no static=no
+rebuild_sched_domains_energy             kernel/sched/topology.c                              262  exported=no static=no
+rq_attach_root                           kernel/sched/topology.c                              472  exported=no static=no
+sched_domains_mutex_lock                 kernel/sched/topology.c                               11  exported=no static=no
+sched_domains_mutex_unlock               kernel/sched/topology.c                               15  exported=no static=no
+sched_domains_numa_masks_clear           kernel/sched/topology.c                             2208  exported=no static=no
+sched_domains_numa_masks_set             kernel/sched/topology.c                             2190  exported=no static=no
+sched_get_rd                             kernel/sched/topology.c                              517  exported=no static=no
+sched_init_domains                       kernel/sched/topology.c                             2756  exported=no static=no
+sched_init_numa                          kernel/sched/topology.c                             2010  exported=no static=no
+sched_numa_find_closest                  kernel/sched/topology.c                             2228  exported=no static=no
+sched_numa_find_nth_cpu                  kernel/sched/topology.c                             2291  exported=yes static=no
+sched_numa_hop_mask                      kernel/sched/topology.c                             2341  exported=yes static=no
+sched_put_rd                             kernel/sched/topology.c                              522  exported=no static=no
+sched_update_asym_prefer_cpu             kernel/sched/topology.c                             1324  exported=no static=no
+sched_update_numa                        kernel/sched/topology.c                             2174  exported=no static=no
+sd_init                                  kernel/sched/topology.c                             1632  exported=no static=no
+sd_parent_degenerate                     kernel/sched/topology.c                              188  exported=no static=no
+set_sched_topology                       kernel/sched/topology.c                             1807  exported=no static=no
+tl_cls_mask                              kernel/sched/topology.c                             1758  exported=no static=no
+tl_mc_mask                               kernel/sched/topology.c                             1770  exported=no static=no
+tl_pkg_mask                              kernel/sched/topology.c                             1776  exported=no static=no
+tl_smt_mask                              kernel/sched/topology.c                             1746  exported=no static=no
+cpupri_cleanup                           kernel/sched/cpupri.c                                310  exported=no static=no
+cpupri_find                              kernel/sched/cpupri.c                                122  exported=no static=no
+cpupri_find_fitness                      kernel/sched/cpupri.c                                145  exported=no static=no
+cpupri_init                              kernel/sched/cpupri.c                                279  exported=no static=no
+cpupri_set                               kernel/sched/cpupri.c                                211  exported=no static=no
+__var_waitqueue                          kernel/sched/wait_bit.c                              164  exported=yes static=no
+__wait_on_bit                            kernel/sched/wait_bit.c                               44  exported=yes static=no
+__wait_on_bit_lock                       kernel/sched/wait_bit.c                               85  exported=yes static=no
+__wake_up_bit                            kernel/sched/wait_bit.c                              124  exported=yes static=no
+bit_wait                                 kernel/sched/wait_bit.c                              238  exported=yes static=no
+bit_wait_io                              kernel/sched/wait_bit.c                              248  exported=yes static=no
+bit_wait_timeout                         kernel/sched/wait_bit.c                              258  exported=yes static=no
+bit_waitqueue                            kernel/sched/wait_bit.c                               15  exported=yes static=no
+init_wait_var_entry                      kernel/sched/wait_bit.c                              185  exported=yes static=no
+out_of_line_wait_on_bit                  kernel/sched/wait_bit.c                               61  exported=yes static=no
+out_of_line_wait_on_bit_lock             kernel/sched/wait_bit.c                              114  exported=yes static=no
+out_of_line_wait_on_bit_timeout          kernel/sched/wait_bit.c                               71  exported=yes static=no
+var_wake_function                        kernel/sched/wait_bit.c                              171  exported=no static=no
+wait_bit_init                            kernel/sched/wait_bit.c                              272  exported=no static=no
+wake_bit_function                        kernel/sched/wait_bit.c                               24  exported=yes static=no
+wake_up_bit                              kernel/sched/wait_bit.c                              158  exported=yes static=no
+wake_up_var                              kernel/sched/wait_bit.c                              232  exported=yes static=no
+cpuacct_account_field                    kernel/sched/cpuacct.c                               352  exported=no static=no
+cpuacct_charge                           kernel/sched/cpuacct.c                               336  exported=no static=no
+cpuacct_css_alloc                        kernel/sched/cpuacct.c                                57  exported=no static=no
+autogroup_create                         kernel/sched/autogroup.c                              87  exported=yes static=yes
+autogroup_free                           kernel/sched/autogroup.c                              44  exported=no static=no
+autogroup_init                           kernel/sched/autogroup.c                              35  exported=no static=no
+autogroup_move_group                     kernel/sched/autogroup.c                             160  exported=no static=no
+autogroup_path                           kernel/sched/autogroup.c                             287  exported=no static=no
+proc_sched_autogroup_set_nice            kernel/sched/autogroup.c                             233  exported=no static=no
+proc_sched_autogroup_show_task           kernel/sched/autogroup.c                             271  exported=no static=no
+sched_autogroup_create_attach            kernel/sched/autogroup.c                             195  exported=yes static=no
+sched_autogroup_detach                   kernel/sched/autogroup.c                             207  exported=yes static=no
+sched_autogroup_exit                     kernel/sched/autogroup.c                             218  exported=no static=no
+sched_autogroup_exit_task                kernel/sched/autogroup.c                             149  exported=no static=no
+sched_autogroup_fork                     kernel/sched/autogroup.c                             213  exported=no static=no
+task_wants_autogroup                     kernel/sched/autogroup.c                             131  exported=no static=no
+SYSCALL_DEFINE3                          kernel/sched/membarrier.c                            627  exported=no static=no
+membarrier_exec_mmap                     kernel/sched/membarrier.c                            222  exported=no static=no
+membarrier_update_current_mm             kernel/sched/membarrier.c                            238  exported=no static=no
+___update_load_avg                       kernel/sched/pelt.c                                  258  exported=no static=no
+___update_load_sum                       kernel/sched/pelt.c                                  181  exported=no static=no
+__update_load_avg_blocked_se             kernel/sched/pelt.c                                  296  exported=no static=no
+__update_load_avg_cfs_rq                 kernel/sched/pelt.c                                  321  exported=no static=no
+__update_load_avg_se                     kernel/sched/pelt.c                                  307  exported=no static=no
+accumulate_sum                           kernel/sched/pelt.c                                  103  exported=no static=no
+update_dl_rq_load_avg                    kernel/sched/pelt.c                                  373  exported=no static=no
+update_hw_load_avg                       kernel/sched/pelt.c                                  404  exported=no static=no
+update_irq_load_avg                      kernel/sched/pelt.c                                  431  exported=no static=no
+update_other_load_avgs                   kernel/sched/pelt.c                                  477  exported=no static=no
+update_rt_rq_load_avg                    kernel/sched/pelt.c                                  347  exported=no static=no
+housekeeping_affine                      kernel/sched/isolation.c                              70  exported=yes static=no
+housekeeping_any_cpu                     kernel/sched/isolation.c                              35  exported=yes static=no
+housekeeping_cpumask                     kernel/sched/isolation.c                              61  exported=yes static=no
+housekeeping_enabled                     kernel/sched/isolation.c                              29  exported=yes static=no
+housekeeping_init                        kernel/sched/isolation.c                              87  exported=no static=no
+housekeeping_test_cpu                    kernel/sched/isolation.c                              78  exported=yes static=no
+calc_global_load                         kernel/sched/loadavg.c                               351  exported=no static=no
+calc_global_load_tick                    kernel/sched/loadavg.c                               387  exported=no static=no
+calc_load_fold_active                    kernel/sched/loadavg.c                                80  exported=no static=no
+calc_load_n                              kernel/sched/loadavg.c                               158  exported=no static=no
+calc_load_nohz_remote                    kernel/sched/loadavg.c                               260  exported=no static=no
+calc_load_nohz_start                     kernel/sched/loadavg.c                               247  exported=no static=no
+calc_load_nohz_stop                      kernel/sched/loadavg.c                               265  exported=no static=no
+fixed_power_int                          kernel/sched/loadavg.c                               111  exported=no static=no
+get_avenrun                              kernel/sched/loadavg.c                                73  exported=no static=no
+__clear_sched_clock_stable               kernel/sched/clock.c                                 181  exported=no static=no
+__scd_stamp                              kernel/sched/clock.c                                 114  exported=no static=no
+__sched_clock_gtod_offset                kernel/sched/clock.c                                 200  exported=no static=no
+__sched_clock_work                       kernel/sched/clock.c                                 155  exported=no static=no
+__set_sched_clock_stable                 kernel/sched/clock.c                                 120  exported=no static=no
+clear_sched_clock_stable                 kernel/sched/clock.c                                 190  exported=no static=no
+cpu_sdc                                  kernel/sched/clock.c                                 104  exported=no static=no
+local_clock                              kernel/sched/clock.c                                 314  exported=yes static=no
+local_clock_noinstr                      kernel/sched/clock.c                                 299  exported=no static=no
+running_clock                            kernel/sched/clock.c                                 505  exported=no static=no
+sched_clock                              kernel/sched/clock.c                                  65  exported=yes static=no
+sched_clock_cpu                          kernel/sched/clock.c                                 391  exported=yes static=no
+sched_clock_cpu                          kernel/sched/clock.c                                 487  exported=yes static=no
+sched_clock_idle_sleep_event             kernel/sched/clock.c                                 452  exported=yes static=no
+sched_clock_idle_wakeup_event            kernel/sched/clock.c                                 461  exported=yes static=no
+sched_clock_init                         kernel/sched/clock.c                                 208  exported=no static=no
+sched_clock_init                         kernel/sched/clock.c                                 479  exported=no static=no
+sched_clock_stable                       kernel/sched/clock.c                                 109  exported=no static=no
+sched_clock_tick                         kernel/sched/clock.c                                 415  exported=no static=no
+sched_clock_tick_stable                  kernel/sched/clock.c                                 432  exported=no static=no
+__schedstats_from_rt_se                  kernel/sched/rt.c                                   1223  exported=no static=no
+alloc_rt_sched_group                     kernel/sched/rt.c                                    253  exported=no static=no
+alloc_rt_sched_group                     kernel/sched/rt.c                                    327  exported=no static=no
+dec_rt_group                             kernel/sched/rt.c                                   1129  exported=no static=no
+dec_rt_group                             kernel/sched/rt.c                                   1145  exported=no static=no
+dec_rt_prio                              kernel/sched/rt.c                                   1091  exported=no static=no
+dec_rt_prio_smp                          kernel/sched/rt.c                                   1065  exported=no static=no
+dec_rt_tasks                             kernel/sched/rt.c                                   1188  exported=no static=no
+dequeue_top_rt_rq                        kernel/sched/rt.c                                   1011  exported=no static=no
+enqueue_task_rt                          kernel/sched/rt.c                                   1431  exported=no static=no
+enqueue_top_rt_rq                        kernel/sched/rt.c                                   1028  exported=no static=no
+free_rt_sched_group                      kernel/sched/rt.c                                    208  exported=no static=no
+free_rt_sched_group                      kernel/sched/rt.c                                    325  exported=no static=no
+inc_rt_group                             kernel/sched/rt.c                                   1120  exported=no static=no
+inc_rt_group                             kernel/sched/rt.c                                   1140  exported=no static=no
+inc_rt_prio                              kernel/sched/rt.c                                   1080  exported=no static=no
+inc_rt_prio_smp                          kernel/sched/rt.c                                   1050  exported=no static=no
+inc_rt_tasks                             kernel/sched/rt.c                                   1175  exported=no static=no
+init_rt_bandwidth                        kernel/sched/rt.c                                    125  exported=no static=no
+init_rt_rq                               kernel/sched/rt.c                                     68  exported=no static=no
+init_sched_rt_class                      kernel/sched/rt.c                                   2396  exported=no static=no
+init_tg_rt_entry                         kernel/sched/rt.c                                    226  exported=no static=no
+print_rt_stats                           kernel/sched/rt.c                                   2934  exported=no static=no
+prio_changed_rt                          kernel/sched/rt.c                                   2440  exported=no static=no
+requeue_rt_entity                        kernel/sched/rt.c                                   1467  exported=no static=no
+rt_se_nr_running                         kernel/sched/rt.c                                   1150  exported=no static=no
+rt_se_rr_nr_running                      kernel/sched/rt.c                                   1161  exported=no static=no
+rto_push_irq_work_func                   kernel/sched/rt.c                                   2192  exported=no static=no
+sched_group_rt_period                    kernel/sched/rt.c                                   2804  exported=no static=no
+sched_group_rt_runtime                   kernel/sched/rt.c                                   2779  exported=no static=no
+sched_group_set_rt_period                kernel/sched/rt.c                                   2791  exported=no static=no
+sched_group_set_rt_runtime               kernel/sched/rt.c                                   2765  exported=no static=no
+sched_rt_bandwidth_account               kernel/sched/rt.c                                    597  exported=no static=no
+sched_rt_can_attach                      kernel/sched/rt.c                                   2826  exported=no static=no
+sched_rt_period_rt_rq                    kernel/sched/rt.c                                    587  exported=no static=no
+sched_rt_period_rt_rq                    kernel/sched/rt.c                                    948  exported=no static=no
+select_task_rq_rt                        kernel/sched/rt.c                                   1499  exported=no static=no
+unregister_rt_sched_group                kernel/sched/rt.c                                    199  exported=no static=no
+unregister_rt_sched_group                kernel/sched/rt.c                                    323  exported=no static=no
+update_stats_dequeue_rt                  kernel/sched/rt.c                                   1301  exported=no static=no
+update_stats_enqueue_rt                  kernel/sched/rt.c                                   1271  exported=no static=no
+update_stats_enqueue_sleeper_rt          kernel/sched/rt.c                                   1252  exported=no static=no
+update_stats_wait_end_rt                 kernel/sched/rt.c                                   1282  exported=no static=no
+update_stats_wait_start_rt               kernel/sched/rt.c                                   1233  exported=no static=no
+balance_stop                             kernel/sched/stop_task.c                              19  exported=no static=no
+dequeue_task_stop                        kernel/sched/stop_task.c                              50  exported=no static=no
+enqueue_task_stop                        kernel/sched/stop_task.c                              44  exported=no static=no
+prio_changed_stop                        kernel/sched/stop_task.c                              84  exported=no static=no
+select_task_rq_stop                      kernel/sched/stop_task.c                              13  exported=no static=no
+wakeup_preempt_stop                      kernel/sched/stop_task.c                              25  exported=no static=no
+DEFINE_CLASS                             kernel/sched/syscalls.c                              260  exported=no static=no
+SYSCALL_DEFINE0                          kernel/sched/syscalls.c                             1352  exported=no static=no
+SYSCALL_DEFINE1                          kernel/sched/syscalls.c                              132  exported=no static=no
+SYSCALL_DEFINE1                          kernel/sched/syscalls.c                              993  exported=no static=no
+SYSCALL_DEFINE1                          kernel/sched/syscalls.c                             1461  exported=no static=no
+SYSCALL_DEFINE1                          kernel/sched/syscalls.c                             1489  exported=no static=no
+SYSCALL_DEFINE2                          kernel/sched/syscalls.c                              947  exported=no static=no
+SYSCALL_DEFINE2                          kernel/sched/syscalls.c                             1023  exported=no static=no
+SYSCALL_DEFINE2                          kernel/sched/syscalls.c                             1547  exported=no static=no
+SYSCALL_DEFINE2                          kernel/sched/syscalls.c                             1560  exported=no static=no
+SYSCALL_DEFINE3                          kernel/sched/syscalls.c                              932  exported=no static=no
+SYSCALL_DEFINE3                          kernel/sched/syscalls.c                              958  exported=no static=no
+SYSCALL_DEFINE3                          kernel/sched/syscalls.c                             1254  exported=no static=no
+SYSCALL_DEFINE3                          kernel/sched/syscalls.c                             1299  exported=no static=no
+SYSCALL_DEFINE4                          kernel/sched/syscalls.c                             1058  exported=no static=no
+__sched_setaffinity                      kernel/sched/syscalls.c                             1128  exported=no static=no
+__sched_setscheduler                     kernel/sched/syscalls.c                              492  exported=no static=no
+available_idle_cpu                       kernel/sched/syscalls.c                              203  exported=no static=no
+can_nice                                 kernel/sched/syscalls.c                              118  exported=no static=no
+dl_task_check_affinity                   kernel/sched/syscalls.c                             1099  exported=no static=no
+do_sched_setscheduler                    kernel/sched/syscalls.c                              851  exported=no static=no
+idle_cpu                                 kernel/sched/syscalls.c                              181  exported=no static=no
+idle_task                                kernel/sched/syscalls.c                              220  exported=no static=no
+sched_core_idle_cpu                      kernel/sched/syscalls.c                              226  exported=no static=no
+sched_getaffinity                        kernel/sched/syscalls.c                             1270  exported=no static=no
+sched_set_fifo                           kernel/sched/syscalls.c                              810  exported=yes static=no
+sched_set_fifo_low                       kernel/sched/syscalls.c                              820  exported=yes static=no
+sched_set_fifo_secondary                 kernel/sched/syscalls.c                              834  exported=no static=no
+sched_set_normal                         kernel/sched/syscalls.c                              840  exported=yes static=no
+sched_setaffinity                        kernel/sched/syscalls.c                             1189  exported=no static=no
+sched_setattr                            kernel/sched/syscalls.c                              762  exported=yes static=no
+sched_setattr_nocheck                    kernel/sched/syscalls.c                              767  exported=yes static=no
+sched_setscheduler                       kernel/sched/syscalls.c                              756  exported=no static=no
+sched_setscheduler_nocheck               kernel/sched/syscalls.c                              786  exported=no static=no
+set_user_nice                            kernel/sched/syscalls.c                               65  exported=yes static=no
+task_prio                                kernel/sched/syscalls.c                              170  exported=no static=no
+yield                                    kernel/sched/syscalls.c                             1380  exported=yes static=no
+yield_to                                 kernel/sched/syscalls.c                             1402  exported=yes static=no
+__scx_bpf_select_cpu_and                 kernel/sched/ext_idle.c                             1030  exported=no static=no
+__scx_update_idle                        kernel/sched/ext_idle.c                              734  exported=no static=no
+pick_idle_cpu_from_online_nodes          kernel/sched/ext_idle.c                              191  exported=no static=no
+scx_bpf_cpu_node                         kernel/sched/ext_idle.c                              950  exported=no static=no
+scx_bpf_get_idle_cpumask                 kernel/sched/ext_idle.c                             1096  exported=no static=no
+scx_bpf_get_idle_cpumask_node            kernel/sched/ext_idle.c                             1072  exported=no static=no
+scx_bpf_get_idle_smtmask                 kernel/sched/ext_idle.c                             1155  exported=no static=no
+scx_bpf_get_idle_smtmask_node            kernel/sched/ext_idle.c                             1127  exported=no static=no
+scx_bpf_pick_any_cpu                     kernel/sched/ext_idle.c                             1372  exported=no static=no
+scx_bpf_pick_any_cpu_node                kernel/sched/ext_idle.c                             1325  exported=no static=no
+scx_bpf_pick_idle_cpu                    kernel/sched/ext_idle.c                             1282  exported=no static=no
+scx_bpf_pick_idle_cpu_node               kernel/sched/ext_idle.c                             1242  exported=no static=no
+scx_bpf_put_idle_cpumask                 kernel/sched/ext_idle.c                             1184  exported=no static=no
+scx_bpf_select_cpu_and                   kernel/sched/ext_idle.c                             1048  exported=no static=no
+scx_bpf_select_cpu_dfl                   kernel/sched/ext_idle.c                              977  exported=no static=no
+scx_bpf_test_and_clear_cpu_idle          kernel/sched/ext_idle.c                             1204  exported=no static=no
+scx_idle_disable                         kernel/sched/ext_idle.c                              812  exported=no static=no
+scx_idle_enable                          kernel/sched/ext_idle.c                              797  exported=no static=no
+scx_idle_init                            kernel/sched/ext_idle.c                             1426  exported=no static=no
+scx_idle_init_masks                      kernel/sched/ext_idle.c                              658  exported=no static=no
+scx_idle_update_selcpu_topology          kernel/sched/ext_idle.c                              344  exported=no static=no
+scx_select_cpu_dfl                       kernel/sched/ext_idle.c                              451  exported=no static=no
+__finish_swait                           kernel/sched/swait.c                                 126  exported=no static=no
+__init_swait_queue_head                  kernel/sched/swait.c                                   7  exported=yes static=no
+__prepare_to_swait                       kernel/sched/swait.c                                  85  exported=no static=no
+finish_swait                             kernel/sched/swait.c                                 133  exported=yes static=no
+prepare_to_swait_event                   kernel/sched/swait.c                                 103  exported=yes static=no
+prepare_to_swait_exclusive               kernel/sched/swait.c                                  92  exported=yes static=no
+swake_up_all                             kernel/sched/swait.c                                  62  exported=yes static=no
+swake_up_all_locked                      kernel/sched/swait.c                                  42  exported=no static=no
+swake_up_locked                          kernel/sched/swait.c                                  22  exported=yes static=no
+swake_up_one                             kernel/sched/swait.c                                  48  exported=yes static=no
+main                                     kernel/sched/rq-offsets.c                              7  exported=no static=no
+__update_stats_enqueue_sleeper           kernel/sched/stats.c                                  48  exported=no static=no
+__update_stats_wait_end                  kernel/sched/stats.c                                  21  exported=no static=no
+__update_stats_wait_start                kernel/sched/stats.c                                   7  exported=no static=no
+cpudl_cleanup                            kernel/sched/cpudeadline.c                           276  exported=no static=no
+cpudl_clear                              kernel/sched/cpudeadline.c                           175  exported=no static=no
+cpudl_find                               kernel/sched/cpudeadline.c                           117  exported=no static=no
+cpudl_init                               kernel/sched/cpudeadline.c                           248  exported=no static=no
+cpudl_set                                kernel/sched/cpudeadline.c                           218  exported=no static=no
+__wait_for_common                        kernel/sched/completion.c                            113  exported=no static=no
+complete                                 kernel/sched/completion.c                             50  exported=yes static=no
+complete_all                             kernel/sched/completion.c                             72  exported=yes static=no
+complete_on_current_cpu                  kernel/sched/completion.c                             33  exported=no static=no
+completion_done                          kernel/sched/completion.c                            342  exported=yes static=no
+do_wait_for_common                       kernel/sched/completion.c                             86  exported=no static=no
+try_wait_for_completion                  kernel/sched/completion.c                            309  exported=yes static=no
+wait_for_common                          kernel/sched/completion.c                            130  exported=no static=no
+wait_for_common_io                       kernel/sched/completion.c                            136  exported=no static=no
+wait_for_completion                      kernel/sched/completion.c                            151  exported=yes static=no
+wait_for_completion_interruptible        kernel/sched/completion.c                            219  exported=yes static=no
+wait_for_completion_interruptible_timeout kernel/sched/completion.c                            241  exported=yes static=no
+wait_for_completion_io                   kernel/sched/completion.c                            184  exported=yes static=no
+wait_for_completion_io_timeout           kernel/sched/completion.c                            204  exported=yes static=no
+wait_for_completion_killable             kernel/sched/completion.c                            257  exported=yes static=no
+wait_for_completion_killable_timeout     kernel/sched/completion.c                            290  exported=yes static=no
+wait_for_completion_state                kernel/sched/completion.c                            267  exported=yes static=no
+wait_for_completion_timeout              kernel/sched/completion.c                            170  exported=yes static=no
+__scx_bpf_dsq_insert_vtime               kernel/sched/ext.c                                  5844  exported=no static=no
+bpf_iter_scx_dsq_destroy                 kernel/sched/ext.c                                  6597  exported=no static=no
+bpf_iter_scx_dsq_new                     kernel/sched/ext.c                                  6509  exported=no static=no
+bpf_iter_scx_dsq_next                    kernel/sched/ext.c                                  6551  exported=no static=no
+do_pick_task_scx                         kernel/sched/ext.c                                  2446  exported=no static=no
+init_sched_ext_class                     kernel/sched/ext.c                                  5625  exported=no static=no
+init_scx_entity                          kernel/sched/ext.c                                  2960  exported=no static=no
+preempt_reason_from_class                kernel/sched/ext.c                                  2340  exported=no static=no
+print_scx_info                           kernel/sched/ext.c                                  5563  exported=no static=no
+sched_ext_dead                           kernel/sched/ext.c                                  3036  exported=no static=no
+scx_allow_ttwu_queue                     kernel/sched/ext.c                                  3694  exported=no static=no
+scx_bpf_cpu_curr                         kernel/sched/ext.c                                  7053  exported=no static=no
+scx_bpf_cpu_rq                           kernel/sched/ext.c                                  6998  exported=no static=no
+scx_bpf_cpuperf_cap                      kernel/sched/ext.c                                  6827  exported=no static=no
+scx_bpf_cpuperf_cur                      kernel/sched/ext.c                                  6854  exported=no static=no
+scx_bpf_cpuperf_set                      kernel/sched/ext.c                                  6881  exported=no static=no
+scx_bpf_create_dsq                       kernel/sched/ext.c                                  6283  exported=no static=no
+scx_bpf_destroy_dsq                      kernel/sched/ext.c                                  6488  exported=no static=no
+scx_bpf_dispatch_cancel                  kernel/sched/ext.c                                  6006  exported=no static=no
+scx_bpf_dispatch_nr_slots                kernel/sched/ext.c                                  5984  exported=no static=no
+scx_bpf_dsq_insert                       kernel/sched/ext.c                                  5781  exported=no static=no
+scx_bpf_dsq_insert___v2                  kernel/sched/ext.c                                  5755  exported=no static=no
+scx_bpf_dsq_insert_vtime                 kernel/sched/ext.c                                  5862  exported=no static=no
+scx_bpf_dsq_move                         kernel/sched/ext.c                                  6139  exported=no static=no
+scx_bpf_dsq_move_set_slice               kernel/sched/ext.c                                  6086  exported=no static=no
+scx_bpf_dsq_move_set_vtime               kernel/sched/ext.c                                  6105  exported=no static=no
+scx_bpf_dsq_move_to_local                kernel/sched/ext.c                                  6040  exported=no static=no
+scx_bpf_dsq_move_vtime                   kernel/sched/ext.c                                  6164  exported=no static=no
+scx_bpf_dsq_nr_queued                    kernel/sched/ext.c                                  6442  exported=no static=no
+scx_bpf_dsq_peek                         kernel/sched/ext.c                                  6625  exported=no static=no
+scx_bpf_dump_bstr                        kernel/sched/ext.c                                  6755  exported=no static=no
+scx_bpf_error_bstr                       kernel/sched/ext.c                                  6729  exported=no static=no
+scx_bpf_events                           kernel/sched/ext.c                                  7192  exported=no static=no
+scx_bpf_exit_bstr                        kernel/sched/ext.c                                  6706  exported=no static=no
+scx_bpf_get_online_cpumask               kernel/sched/ext.c                                  6957  exported=no static=no
+scx_bpf_get_possible_cpumask             kernel/sched/ext.c                                  6949  exported=no static=no
+scx_bpf_kick_cpu                         kernel/sched/ext.c                                  6425  exported=no static=no
+scx_bpf_locked_rq                        kernel/sched/ext.c                                  7027  exported=no static=no
+scx_bpf_now                              kernel/sched/ext.c                                  7132  exported=no static=no
+scx_bpf_nr_cpu_ids                       kernel/sched/ext.c                                  6941  exported=no static=no
+scx_bpf_nr_node_ids                      kernel/sched/ext.c                                  6931  exported=no static=no
+scx_bpf_put_cpumask                      kernel/sched/ext.c                                  6966  exported=no static=no
+scx_bpf_reenqueue_local                  kernel/sched/ext.c                                  6243  exported=no static=no
+scx_bpf_reenqueue_local___v2             kernel/sched/ext.c                                  6808  exported=no static=no
+scx_bpf_task_cgroup                      kernel/sched/ext.c                                  7081  exported=no static=no
+scx_bpf_task_cpu                         kernel/sched/ext.c                                  6989  exported=no static=no
+scx_bpf_task_running                     kernel/sched/ext.c                                  6980  exported=no static=no
+scx_bpf_task_set_dsq_vtime               kernel/sched/ext.c                                  6356  exported=no static=no
+scx_bpf_task_set_slice                   kernel/sched/ext.c                                  6342  exported=no static=no
+scx_can_stop_tick                        kernel/sched/ext.c                                  3111  exported=no static=no
+scx_cancel_fork                          kernel/sched/ext.c                                  3021  exported=no static=no
+scx_cgroup_can_attach                    kernel/sched/ext.c                                  3185  exported=no static=no
+scx_cgroup_cancel_attach                 kernel/sched/ext.c                                  3253  exported=no static=no
+scx_cgroup_move_task                     kernel/sched/ext.c                                  3234  exported=no static=no
+scx_check_setscheduler                   kernel/sched/ext.c                                  3098  exported=no static=no
+scx_fork                                 kernel/sched/ext.c                                  2984  exported=no static=no
+scx_group_set_bandwidth                  kernel/sched/ext.c                                  3303  exported=no static=no
+scx_group_set_idle                       kernel/sched/ext.c                                  3287  exported=no static=no
+scx_group_set_weight                     kernel/sched/ext.c                                  3271  exported=no static=no
+scx_hardlockup                           kernel/sched/ext.c                                  3797  exported=no static=no
+scx_post_fork                            kernel/sched/ext.c                                  2994  exported=no static=no
+scx_pre_fork                             kernel/sched/ext.c                                  2973  exported=no static=no
+scx_prio_less                            kernel/sched/ext.c                                  2533  exported=no static=no
+scx_rcu_cpu_stall                        kernel/sched/ext.c                                  3761  exported=no static=no
+scx_rq_activate                          kernel/sched/ext.c                                  2663  exported=no static=no
+scx_rq_deactivate                        kernel/sched/ext.c                                  2668  exported=no static=no
+scx_softlockup                           kernel/sched/ext.c                                  3776  exported=no static=no
+scx_tg_init                              kernel/sched/ext.c                                  3135  exported=no static=no
+scx_tg_offline                           kernel/sched/ext.c                                  3172  exported=no static=no
+scx_tg_online                            kernel/sched/ext.c                                  3143  exported=no static=no
+scx_tick                                 kernel/sched/ext.c                                  2731  exported=no static=no
+task_should_scx                          kernel/sched/ext.c                                  3685  exported=no static=no
+cpufreq_default_governor                 kernel/sched/cpufreq_schedutil.c                     926  exported=no static=no
+get_capacity_ref_freq                    kernel/sched/cpufreq_schedutil.c                     154  exported=no static=no
+rate_limit_us_store                      kernel/sched/cpufreq_schedutil.c                     595  exported=no static=no
+sugov_effective_cpu_perf                 kernel/sched/cpufreq_schedutil.c                     209  exported=no static=no
+sugov_is_governor                        kernel/sched/cpufreq_schedutil.c                     932  exported=no static=no
+sugov_update_shared                      kernel/sched/cpufreq_schedutil.c                     514  exported=no static=no
+__account_forceidle_time                 kernel/sched/cputime.c                               241  exported=no static=no
+account_guest_time                       kernel/sched/cputime.c                               144  exported=no static=no
+account_idle_ticks                       kernel/sched/cputime.c                               497  exported=no static=no
+account_idle_time                        kernel/sched/cputime.c                               223  exported=no static=no
+account_process_tick                     kernel/sched/cputime.c                               465  exported=no static=no
+account_steal_time                       kernel/sched/cputime.c                               212  exported=no static=no
+account_system_index_time                kernel/sched/cputime.c                               169  exported=no static=no
+account_system_time                      kernel/sched/cputime.c                               189  exported=no static=no
+account_user_time                        kernel/sched/cputime.c                               122  exported=no static=no
+cputime_adjust                           kernel/sched/cputime.c                               434  exported=yes static=no
+cputime_adjust                           kernel/sched/cputime.c                               536  exported=yes static=no
+disable_sched_clock_irqtime              kernel/sched/cputime.c                                35  exported=no static=no
+enable_sched_clock_irqtime               kernel/sched/cputime.c                                30  exported=no static=no
+irqtime_account_irq                      kernel/sched/cputime.c                                56  exported=no static=no
+kcpustat_cpu_fetch                       kernel/sched/cputime.c                              1051  exported=yes static=no
+kcpustat_field                           kernel/sched/cputime.c                               964  exported=yes static=no
+task_cputime                             kernel/sched/cputime.c                               834  exported=yes static=no
+task_cputime_adjusted                    kernel/sched/cputime.c                               441  exported=yes static=no
+task_cputime_adjusted                    kernel/sched/cputime.c                               614  exported=yes static=no
+task_gtime                               kernel/sched/cputime.c                               808  exported=no static=no
+thread_group_cputime                     kernel/sched/cputime.c                               313  exported=no static=no
+thread_group_cputime_adjusted            kernel/sched/cputime.c                               448  exported=no static=no
+thread_group_cputime_adjusted            kernel/sched/cputime.c                               626  exported=no static=no
+vtime_account_idle                       kernel/sched/cputime.c                               762  exported=no static=no
+vtime_account_irq                        kernel/sched/cputime.c                               418  exported=no static=no
+vtime_account_kernel                     kernel/sched/cputime.c                               696  exported=no static=no
+vtime_guest_enter                        kernel/sched/cputime.c                               732  exported=yes static=no
+vtime_guest_exit                         kernel/sched/cputime.c                               750  exported=yes static=no
+vtime_init_idle                          kernel/sched/cputime.c                               794  exported=no static=no
+vtime_task_switch_generic                kernel/sched/cputime.c                               767  exported=no static=no
+vtime_user_enter                         kernel/sched/cputime.c                               708  exported=no static=no
+vtime_user_exit                          kernel/sched/cputime.c                               718  exported=no static=no
+__sched_core_account_forceidle           kernel/sched/core_sched.c                            242  exported=no static=no
+__sched_core_tick                        kernel/sched/core_sched.c                            291  exported=no static=no
+sched_core_fork                          kernel/sched/core_sched.c                            112  exported=no static=no
+sched_core_free                          kernel/sched/core_sched.c                            118  exported=no static=no
+sched_core_share_pid                     kernel/sched/core_sched.c                            131  exported=no static=no
+cpufreq_add_update_util_hook             kernel/sched/cpufreq.c                                30  exported=yes static=no
+cpufreq_remove_update_util_hook          kernel/sched/cpufreq.c                                55  exported=yes static=no
+cpufreq_this_cpu_can_update              kernel/sched/cpufreq.c                                70  exported=no static=no
+
+=== STRUCTURES ===
+struct idle_timer                          kernel/sched/idle.c                                  372
+struct cfs_schedulable_data                kernel/sched/core.c                                 9539
+struct migration_arg                       kernel/sched/core.c                                 2451
+struct migration_swap_arg                  kernel/sched/core.c                                 3301
+struct set_affinity_pending                kernel/sched/core.c                                 2461
+struct tick_work                           kernel/sched/core.c                                 5556
+struct uclamp_request                      kernel/sched/core.c                                 9284
+struct __anon8824575a0108                  kernel/sched/fair.c                                 7148
+struct energy_env                          kernel/sched/fair.c                                 8146
+struct lb_env                              kernel/sched/fair.c                                 9273
+struct numa_group                          kernel/sched/fair.c                                 1433
+struct numa_stats                          kernel/sched/fair.c                                 2017
+struct sd_lb_stats                         kernel/sched/fair.c                                 9999
+struct sg_lb_stats                         kernel/sched/fair.c                                 9976
+struct task_numa_env                       kernel/sched/fair.c                                 2029
+struct __cmp_key                           kernel/sched/topology.c                             2252
+struct s_data                              kernel/sched/topology.c                              778
+struct cpudl                               kernel/sched/cpudeadline.h                            13
+struct cpudl_item                          kernel/sched/cpudeadline.h                             7
+struct sched_ext_ops                       kernel/sched/ext_internal.h                          272
+struct scx_cgroup_init_args                kernel/sched/ext_internal.h                          217
+struct scx_cpu_acquire_args                kernel/sched/ext_internal.h                          242
+struct scx_cpu_release_args                kernel/sched/ext_internal.h                          245
+struct scx_dump_ctx                        kernel/sched/ext_internal.h                          256
+struct scx_event_stats                     kernel/sched/ext_internal.h                          824
+struct scx_exit_info                       kernel/sched/ext_internal.h                           84
+struct scx_exit_task_args                  kernel/sched/ext_internal.h                          211
+struct scx_init_task_args                  kernel/sched/ext_internal.h                          198
+struct scx_sched                           kernel/sched/ext_internal.h                          887
+struct scx_sched_pcpu                      kernel/sched/ext_internal.h                          878
+struct cpuacct                             kernel/sched/cpuacct.c                                26
+struct sched_entity_stats                  kernel/sched/stats.h                                  93
+struct __anon79f64f840108                  kernel/sched/sched.h                                 706
+struct __anon79f64f840208                  kernel/sched/sched.h                                 830
+struct __anon79f64f840308                  kernel/sched/sched.h                                 873
+struct affinity_context                    kernel/sched/sched.h                                2418
+struct asym_cap_data                       kernel/sched/sched.h                                 116
+struct balance_callback                    kernel/sched/sched.h                                 668
+struct cfs_bandwidth                       kernel/sched/sched.h                                 443
+struct cfs_bandwidth                       kernel/sched/sched.h                                 619
+struct cfs_rq                              kernel/sched/sched.h                                 674
+struct dl_bw                               kernel/sched/sched.h                                 345
+struct dl_rq                               kernel/sched/sched.h                                 861
+struct irqtime                             kernel/sched/sched.h                                3309
+struct perf_domain                         kernel/sched/sched.h                                 971
+struct root_domain                         kernel/sched/sched.h                                 985
+struct rq                                  kernel/sched/sched.h                                1119
+struct rq_flags                            kernel/sched/sched.h                                1749
+struct rt_bandwidth                        kernel/sched/sched.h                                 313
+struct rt_prio_array                       kernel/sched/sched.h                                 308
+struct rt_rq                               kernel/sched/sched.h                                 826
+struct sched_change_ctx                    kernel/sched/sched.h                                3968
+struct sched_class                         kernel/sched/sched.h                                2426
+struct sched_group                         kernel/sched/sched.h                                2111
+struct sched_group_capacity                kernel/sched/sched.h                                2094
+struct scx_rq                              kernel/sched/sched.h                                 791
+struct task_group                          kernel/sched/sched.h                                 470
+struct uclamp_bucket                       kernel/sched/sched.h                                1077
+struct uclamp_rq                           kernel/sched/sched.h                                1104
+struct housekeeping                        kernel/sched/isolation.c                              22
+struct sched_clock_data                    kernel/sched/clock.c                                  91
+struct rt_schedulable_data                 kernel/sched/rt.c                                   2637
+struct scx_bpf_select_cpu_and_args         kernel/sched/ext_idle.c                              998
+struct scx_idle_cpus                       kernel/sched/ext_idle.c                               32
+struct bpf_iter_scx_dsq                    kernel/sched/ext.c                                   501
+struct bpf_iter_scx_dsq_kern               kernel/sched/ext.c                                   494
+struct scx_bpf_dsq_insert_vtime_args       kernel/sched/ext.c                                  5805
+struct scx_bstr_buf                        kernel/sched/ext.c                                   129
+struct scx_dsp_buf_ent                     kernel/sched/ext.c                                   110
+struct scx_dsp_ctx                         kernel/sched/ext.c                                   119
+struct scx_dump_data                       kernel/sched/ext.c                                   138
+struct scx_kick_syncs                      kernel/sched/ext.c                                    85
+struct scx_task_iter                       kernel/sched/ext.c                                   509
+struct sugov_cpu                           kernel/sched/cpufreq_schedutil.c                      42
+struct sugov_policy                        kernel/sched/cpufreq_schedutil.c                      18
+struct sugov_tunables                      kernel/sched/cpufreq_schedutil.c                      13
+struct cpupri                              kernel/sched/cpupri.h                                 18
+struct cpupri_vec                          kernel/sched/cpupri.h                                 13
+struct autogroup                           kernel/sched/autogroup.h                               9
+struct sched_core_cookie                   kernel/sched/core_sched.c                              9
+============================================================
+ Linux Kernel Architecture Extractor
+ Script: extract_symbols.sh
+ Time: 2025-12-30 19:23:32
+============================================================
+
+==============================
+Summary for: kernel/fork.c
+==============================
+C Files:      1
+Header Files: 0
+Total Lines:  3308
+Functions:    123
+Structures:   1
+==============================
+
+
+=== FUNCTIONS ===
+SYSCALL_DEFINE0                          kernel/fork.c                                       2731  exported=no static=no
+SYSCALL_DEFINE0                          kernel/fork.c                                       2747  exported=no static=no
+SYSCALL_DEFINE1                          kernel/fork.c                                       1781  exported=no static=no
+SYSCALL_DEFINE1                          kernel/fork.c                                       3240  exported=no static=no
+SYSCALL_DEFINE2                          kernel/fork.c                                       2932  exported=no static=no
+SYSCALL_DEFINE5                          kernel/fork.c                                       2760  exported=no static=no
+__cleanup_sighand                        kernel/fork.c                                       1668  exported=no static=no
+__mmdrop                                 kernel/fork.c                                        717  exported=yes static=no
+__put_task_struct                        kernel/fork.c                                        775  exported=yes static=no
+__put_task_struct_rcu_cb                 kernel/fork.c                                        794  exported=yes static=no
+arch_dup_task_struct                     kernel/fork.c                                        893  exported=no static=no
+arch_release_task_struct                 kernel/fork.c                                        176  exported=no static=no
+arch_task_cache_init                     kernel/fork.c                                        802  exported=no static=no
+copy_process                             kernel/fork.c                                       1966  exported=no static=no
+create_io_thread                         kernel/fork.c                                       2587  exported=no static=no
+dup_mm_exe_file                          kernel/fork.c                                        559  exported=no static=no
+exec_mm_release                          kernel/fork.c                                       1497  exported=no static=no
+exit_mm_release                          kernel/fork.c                                       1491  exported=no static=no
+exit_task_stack_account                  kernel/fork.c                                        498  exported=no static=no
+fork_idle                                kernel/fork.c                                       2561  exported=no static=no
+fork_init                                kernel/fork.c                                        848  exported=no static=no
+free_task                                kernel/fork.c                                        528  exported=yes static=no
+get_mm_exe_file                          kernel/fork.c                                       1320  exported=no static=no
+get_task_exe_file                        kernel/fork.c                                       1338  exported=no static=no
+get_task_mm                              kernel/fork.c                                       1364  exported=yes static=no
+init_task_pid                            kernel/fork.c                                       1807  exported=no static=no
+kernel_clone                             kernel/fork.c                                       2610  exported=no static=no
+kernel_thread                            kernel/fork.c                                       2700  exported=no static=no
+ksys_unshare                             kernel/fork.c                                       3121  exported=no static=no
+lockdep_tasklist_lock_is_held            kernel/fork.c                                        158  exported=yes static=no
+mm_access                                kernel/fork.c                                       1391  exported=no static=no
+mm_alloc                                 kernel/fork.c                                       1152  exported=yes static=no
+mm_cache_init                            kernel/fork.c                                       3000  exported=no static=no
+mmput                                    kernel/fork.c                                       1191  exported=yes static=no
+mmput_async                              kernel/fork.c                                       1209  exported=yes static=no
+nr_processes                             kernel/fork.c                                        165  exported=no static=no
+pidfd_prepare                            kernel/fork.c                                       1864  exported=no static=no
+proc_caches_init                         kernel/fork.c                                       3019  exported=no static=no
+put_task_stack                           kernel/fork.c                                        521  exported=no static=no
+replace_mm_exe_file                      kernel/fork.c                                       1269  exported=no static=no
+set_mm_exe_file                          kernel/fork.c                                       1232  exported=no static=no
+set_task_stack_end_magic                 kernel/fork.c                                        900  exported=no static=no
+thread_stack_cache_init                  kernel/fork.c                                        454  exported=no static=no
+unshare_files                            kernel/fork.c                                       3251  exported=no static=no
+user_mode_thread                         kernel/fork.c                                       2718  exported=no static=no
+walk_process_tree                        kernel/fork.c                                       2956  exported=no static=no
+
+=== STRUCTURES ===
+struct vm_stack                            kernel/fork.c                                        206
+============================================================
+ Linux Kernel Architecture Extractor
+ Script: extract_symbols.sh
+ Time: 2025-12-30 19:23:34
+============================================================
+
+==============================
+Summary for: kernel/exit.c
+==============================
+C Files:      1
+Header Files: 0
+Total Lines:  1998
+Functions:    62
+Structures:   1
+==============================
+
+
+=== FUNCTIONS ===
+COMPAT_SYSCALL_DEFINE4                   kernel/exit.c                                       1926  exported=no static=no
+COMPAT_SYSCALL_DEFINE5                   kernel/exit.c                                       1941  exported=no static=no
+SYSCALL_DEFINE1                          kernel/exit.c                                       1077  exported=no static=no
+SYSCALL_DEFINE1                          kernel/exit.c                                       1121  exported=no static=no
+SYSCALL_DEFINE3                          kernel/exit.c                                       1918  exported=no static=no
+SYSCALL_DEFINE4                          kernel/exit.c                                       1899  exported=no static=no
+SYSCALL_DEFINE5                          kernel/exit.c                                       1807  exported=no static=no
+__do_wait                                kernel/exit.c                                       1657  exported=no static=no
+__wake_up_parent                         kernel/exit.c                                       1611  exported=no static=no
+abort                                    kernel/exit.c                                       1991  exported=yes static=no
+do_exit                                  kernel/exit.c                                        896  exported=no static=no
+do_group_exit                            kernel/exit.c                                       1087  exported=no static=no
+eligible_child                           kernel/exit.c                                       1135  exported=no static=no
+is_current_pgrp_orphaned                 kernel/exit.c                                        370  exported=no static=no
+kernel_wait                              kernel/exit.c                                       1883  exported=no static=no
+kernel_wait4                             kernel/exit.c                                       1840  exported=no static=no
+kernel_waitid_prepare                    kernel/exit.c                                       1729  exported=no static=no
+kill_orphaned_pgrp                       kernel/exit.c                                        399  exported=no static=no
+make_task_dead                           kernel/exit.c                                       1017  exported=no static=no
+mm_update_next_owner                     kernel/exit.c                                        487  exported=no static=no
+pid_child_should_wake                    kernel/exit.c                                       1587  exported=no static=no
+put_task_struct_rcu_user                 kernel/exit.c                                        234  exported=no static=no
+rcuwait_wake_up                          kernel/exit.c                                        314  exported=yes static=no
+release_task                             kernel/exit.c                                        244  exported=no static=no
+release_thread                           kernel/exit.c                                        240  exported=no static=no
+stack_not_used                           kernel/exit.c                                        783  exported=no static=no
+stack_not_used                           kernel/exit.c                                        794  exported=no static=no
+
+=== STRUCTURES ===
+struct release_task_post                   kernel/exit.c                                        130
+============================================================
+ Linux Kernel Architecture Extractor
+ Script: extract_symbols.sh
+ Time: 2025-12-30 19:23:35
+============================================================
+
+==============================
+Summary for: kernel/signal.c
+==============================
+C Files:      1
+Header Files: 0
+Total Lines:  5050
+Functions:    189
+Structures:   1
+==============================
+
+
+=== FUNCTIONS ===
+COMPAT_SYSCALL_DEFINE1                   kernel/signal.c                                     4556  exported=no static=no
+COMPAT_SYSCALL_DEFINE2                   kernel/signal.c                                     3404  exported=no static=no
+COMPAT_SYSCALL_DEFINE2                   kernel/signal.c                                     4508  exported=no static=no
+COMPAT_SYSCALL_DEFINE2                   kernel/signal.c                                     4864  exported=no static=no
+COMPAT_SYSCALL_DEFINE3                   kernel/signal.c                                     4220  exported=no static=no
+COMPAT_SYSCALL_DEFINE3                   kernel/signal.c                                     4735  exported=no static=no
+COMPAT_SYSCALL_DEFINE4                   kernel/signal.c                                     3347  exported=no static=no
+COMPAT_SYSCALL_DEFINE4                   kernel/signal.c                                     3868  exported=no static=no
+COMPAT_SYSCALL_DEFINE4                   kernel/signal.c                                     3899  exported=no static=no
+COMPAT_SYSCALL_DEFINE4                   kernel/signal.c                                     4260  exported=no static=no
+COMPAT_SYSCALL_DEFINE4                   kernel/signal.c                                     4652  exported=no static=no
+SYSCALL_DEFINE0                          kernel/signal.c                                     3173  exported=no static=no
+SYSCALL_DEFINE0                          kernel/signal.c                                     4781  exported=no static=no
+SYSCALL_DEFINE0                          kernel/signal.c                                     4820  exported=no static=no
+SYSCALL_DEFINE1                          kernel/signal.c                                     4540  exported=no static=no
+SYSCALL_DEFINE1                          kernel/signal.c                                     4787  exported=no static=no
+SYSCALL_DEFINE1                          kernel/signal.c                                     4879  exported=no static=no
+SYSCALL_DEFINE2                          kernel/signal.c                                     3388  exported=no static=no
+SYSCALL_DEFINE2                          kernel/signal.c                                     3947  exported=no static=no
+SYSCALL_DEFINE2                          kernel/signal.c                                     4181  exported=no static=no
+SYSCALL_DEFINE2                          kernel/signal.c                                     4444  exported=no static=no
+SYSCALL_DEFINE2                          kernel/signal.c                                     4803  exported=no static=no
+SYSCALL_DEFINE2                          kernel/signal.c                                     4850  exported=no static=no
+SYSCALL_DEFINE3                          kernel/signal.c                                     4165  exported=no static=no
+SYSCALL_DEFINE3                          kernel/signal.c                                     4209  exported=no static=no
+SYSCALL_DEFINE3                          kernel/signal.c                                     4579  exported=no static=no
+SYSCALL_DEFINE3                          kernel/signal.c                                     4699  exported=no static=no
+SYSCALL_DEFINE3                          kernel/signal.c                                     4887  exported=no static=no
+SYSCALL_DEFINE4                          kernel/signal.c                                     3316  exported=no static=no
+SYSCALL_DEFINE4                          kernel/signal.c                                     3802  exported=no static=no
+SYSCALL_DEFINE4                          kernel/signal.c                                     3835  exported=no static=no
+SYSCALL_DEFINE4                          kernel/signal.c                                     4063  exported=no static=no
+SYSCALL_DEFINE4                          kernel/signal.c                                     4249  exported=no static=no
+SYSCALL_DEFINE4                          kernel/signal.c                                     4627  exported=no static=no
+__compat_save_altstack                   kernel/signal.c                                     4522  exported=no static=no
+__copy_siginfo_to_user32                 kernel/signal.c                                     3626  exported=no static=no
+__kill_pgrp_info                         kernel/signal.c                                     1429  exported=no static=no
+__lock_task_sighand                      kernel/signal.c                                     1358  exported=no static=no
+__save_altstack                          kernel/signal.c                                     4469  exported=no static=no
+__set_current_blocked                    kernel/signal.c                                     3209  exported=no static=no
+arch_vma_name                            kernel/signal.c                                     4895  exported=no static=no
+calculate_sigpending                     kernel/signal.c                                      186  exported=no static=no
+compat_restore_altstack                  kernel/signal.c                                     4515  exported=no static=no
+copy_siginfo_from_user                   kernel/signal.c                                     3540  exported=no static=no
+copy_siginfo_from_user32                 kernel/signal.c                                     3725  exported=no static=no
+copy_siginfo_to_external32               kernel/signal.c                                     3558  exported=no static=no
+copy_siginfo_to_user                     kernel/signal.c                                     3498  exported=no static=no
+dequeue_signal                           kernel/signal.c                                      618  exported=yes static=no
+do_no_restart_syscall                    kernel/signal.c                                     3179  exported=no static=no
+do_notify_parent                         kernel/signal.c                                     2168  exported=no static=no
+do_notify_pidfd                          kernel/signal.c                                     2151  exported=no static=no
+do_send_sig_info                         kernel/signal.c                                     1262  exported=no static=no
+do_send_specific                         kernel/signal.c                                     4117  exported=no static=no
+do_sigaction                             kernel/signal.c                                     4300  exported=no static=no
+do_sigaltstack                           kernel/signal.c                                     4387  exported=no static=no
+exit_signals                             kernel/signal.c                                     3116  exported=no static=no
+flush_itimer_signals                     kernel/signal.c                                     1923  exported=no static=no
+flush_signal_handlers                    kernel/signal.c                                      520  exported=no static=no
+flush_signals                            kernel/signal.c                                      493  exported=yes static=no
+flush_sigqueue                           kernel/signal.c                                      478  exported=no static=no
+force_exit_sig                           kernel/signal.c                                     1662  exported=no static=no
+force_fatal_sig                          kernel/signal.c                                     1649  exported=no static=no
+force_sig                                kernel/signal.c                                     1635  exported=yes static=no
+force_sig_bnderr                         kernel/signal.c                                     1748  exported=no static=no
+force_sig_fault                          kernel/signal.c                                     1702  exported=no static=no
+force_sig_fault_to_task                  kernel/signal.c                                     1689  exported=no static=no
+force_sig_fault_trapno                   kernel/signal.c                                     1844  exported=no static=no
+force_sig_info                           kernel/signal.c                                     1329  exported=no static=no
+force_sig_info_to_task                   kernel/signal.c                                     1294  exported=no static=no
+force_sig_mceerr                         kernel/signal.c                                     1719  exported=no static=no
+force_sig_pkuerr                         kernel/signal.c                                     1763  exported=no static=no
+force_sig_ptrace_errno_trap              kernel/signal.c                                     1829  exported=no static=no
+force_sig_seccomp                        kernel/signal.c                                     1811  exported=no static=no
+force_sigsegv                            kernel/signal.c                                     1681  exported=no static=no
+get_signal                               kernel/signal.c                                     2799  exported=no static=no
+group_send_sig_info                      kernel/signal.c                                     1409  exported=no static=no
+ignore_signals                           kernel/signal.c                                      505  exported=no static=no
+kdb_send_sig                             kernel/signal.c                                     5020  exported=no static=no
+kernel_sigaction                         kernel/signal.c                                     4277  exported=yes static=no
+kill_pgrp                                kernel/signal.c                                     1883  exported=yes static=no
+kill_pid                                 kernel/signal.c                                     1889  exported=yes static=no
+kill_pid_info                            kernel/signal.c                                     1471  exported=no static=no
+kill_pid_usb_asyncio                     kernel/signal.c                                     1521  exported=yes static=no
+lockdep_assert_task_sighand_held         kernel/signal.c                                     1391  exported=no static=no
+next_signal                              kernel/signal.c                                      203  exported=no static=no
+posixtimer_init_sigqueue                 kernel/signal.c                                     1932  exported=no static=no
+posixtimer_send_sigqueue                 kernel/signal.c                                     1976  exported=no static=no
+ptrace_notify                            kernel/signal.c                                     2514  exported=no static=no
+recalc_sigpending                        kernel/signal.c                                      177  exported=yes static=no
+restore_altstack                         kernel/signal.c                                     4458  exported=no static=no
+send_sig                                 kernel/signal.c                                     1629  exported=yes static=no
+send_sig_fault                           kernel/signal.c                                     1707  exported=no static=no
+send_sig_fault_trapno                    kernel/signal.c                                     1860  exported=no static=no
+send_sig_info                            kernel/signal.c                                     1612  exported=yes static=no
+send_sig_mceerr                          kernel/signal.c                                     1733  exported=yes static=no
+send_sig_perf                            kernel/signal.c                                     1777  exported=no static=no
+send_signal_locked                       kernel/signal.c                                     1183  exported=no static=no
+set_compat_user_sigmask                  kernel/signal.c                                     3289  exported=no static=no
+set_current_blocked                      kernel/signal.c                                     3203  exported=no static=no
+set_user_sigmask                         kernel/signal.c                                     3270  exported=no static=no
+sigaction_compat_abi                     kernel/signal.c                                     4295  exported=no static=no
+siginfo_layout                           kernel/signal.c                                     3453  exported=no static=no
+signal_setup_done                        kernel/signal.c                                     3077  exported=no static=no
+signal_wake_up_state                     kernel/signal.c                                      721  exported=no static=no
+signals_init                             kernel/signal.c                                     5005  exported=no static=no
+sigprocmask                              kernel/signal.c                                     3233  exported=yes static=no
+task_clear_jobctl_pending                kernel/signal.c                                      332  exported=no static=no
+task_clear_jobctl_trapping               kernel/signal.c                                      308  exported=no static=no
+task_join_group_stop                     kernel/signal.c                                      387  exported=no static=no
+task_set_jobctl_pending                  kernel/signal.c                                      280  exported=no static=no
+unhandled_signal                         kernel/signal.c                                      536  exported=no static=no
+zap_other_threads                        kernel/signal.c                                     1337  exported=no static=no
+
+=== STRUCTURES ===
+struct __anon590758e00108                  kernel/signal.c                                     3418

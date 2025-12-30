@@ -1,0 +1,20 @@
+@startuml C4_Component
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title File Systems - Component Diagram
+
+LAYOUT_WITH_LEGEND()
+
+Container_Boundary(subsys, "File Systems") {
+    Component(vfs, "VFS", "C", "Virtual File System layer")
+    Component(namei, "Namei", "C", "Path lookup")
+    Component(open, "Open", "C", "File open operations")
+    Component(read_write, "Read/Write", "C", "I/O operations")
+    Component(buffer, "Buffer", "C", "Buffer cache")
+}
+
+Rel(vfs, namei, "Uses")
+Rel(namei, open, "Uses")
+Rel(open, read_write, "Uses")
+Rel(read_write, buffer, "Uses")
+@enduml

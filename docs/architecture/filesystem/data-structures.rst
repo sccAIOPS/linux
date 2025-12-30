@@ -1,0 +1,51 @@
+==========================
+Filesystem Data Structures
+==========================
+
+.. contents:: Table of Contents
+   :depth: 2
+   :local:
+
+Key Structures
+--------------
+
+
+From ``include/linux/fs.h``:
+
+.. uml:: diagrams/class-fs.puml
+
+* ``struct address_space``
+* ``struct address_space_operations``
+* ``struct dir_context``
+* ``struct fasync_struct``
+* ``struct file``
+* ``struct file_handle``
+* ``struct file_operations``
+* ``struct file_ra_state``
+* ``struct file_system_type``
+* ``struct filename``
+* ``struct fown_struct``
+* ``struct iattr``
+* ``struct inode``
+* ``struct inode_operations``
+* ``struct inode_state_flags``
+* ``struct kiocb``
+* ``struct offset_ctx``
+* ``struct renamedata``
+* ``struct simple_transaction_argresp``
+* ``struct tree_descr``
+
+From ``include/linux/dcache.h``:
+
+.. uml:: diagrams/class-dcache.puml
+
+* ``struct __anon7c184f810208``
+* ``struct dentry``
+* ``struct dentry_operations``
+* ``struct name_snapshot``
+* ``struct qstr``
+
+From ``include/linux/namei.h``:
+
+.. uml:: diagrams/class-namei.puml
+

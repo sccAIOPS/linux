@@ -1,0 +1,61 @@
+@startuml File_Read
+title File Read Operation Flow
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+
+participant "User Space" as user #LightBlue
+participant "sys_read" as read #LightGreen
+participant "VFS" as vfs #LightYellow
+participant "Page Cache" as cache #LightPink
+participant "File System" as fs #LightGray
+participant "Block Layer" as block #Wheat
+
+user -> read: read(fd, buf, count)
+activate read
+
+read -> vfs: vfs_read(file, buf, count, pos)
+activate vfs
+
+vfs -> vfs: file->f_op->read_iter()
+
+vfs -> cache: filemap_read()
+activate cache
+
+alt Page in cache (cache hit)
+    cache -> cache: find_get_pages_contig()
+    cache --> vfs: cached pages
+else Page not in cache (cache miss)
+    cache -> fs: readahead / readpage
+    activate fs
+    
+    fs -> block: submit_bio(READ)
+    activate block
+    block -> block: I/O scheduler
+    block -> block: device driver
+    block --> fs: bio completion
+    deactivate block
+    
+    fs --> cache: pages filled
+    deactivate fs
+end
+
+cache --> vfs: data available
+deactivate cache
+
+vfs -> vfs: copy_to_iter(buf, ...)
+note right: Copy to user buffer
+
+vfs --> read: bytes read
+deactivate vfs
+
+read --> user: bytes read (or error)
+deactivate read
+
+note over user,block
+    Readahead:
+    - Kernel predicts sequential access
+    - Prefetches additional pages
+    - Improves I/O performance
+end note
+@enduml

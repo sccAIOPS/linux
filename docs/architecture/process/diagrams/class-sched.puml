@@ -1,0 +1,185 @@
+@startuml
+title Kernel Data Structures
+
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor #FEFECE
+    BorderColor #A80036
+    ArrowColor #A80036
+}
+skinparam stereotypeCBackgroundColor #E0FFE0
+
+class "struct prev_cputime" as prev_cputime <<struct>> {
+    +u64 utime
+    +u64 stime
+    +raw_spinlock_t lock
+    --
+    struct prev_cputime - snapshot of system and user ...
+}
+
+class "struct vtime" as vtime <<struct>> {
+    +seqcount_t seqcount
+    +enum vtime_state state
+    +int cpu
+    +u64 utime
+    +u64 stime
+    +u64 gtime
+}
+
+class "struct sched_param" as sched_param <<struct>> {
+    +int sched_priority
+}
+
+class "struct sched_info" as sched_info <<struct>> {
+    +long pcount
+}
+
+class "struct load_weight" as load_weight <<struct>> {
+    +long weight
+    +u32 inv_weight
+}
+
+class "struct sched_avg" as sched_avg <<struct>> {
+    +u64 last_update_time
+    +u64 load_sum
+    +u64 runnable_sum
+    +u32 util_sum
+    +u32 period_contrib
+    +long load_avg
+    +long runnable_avg
+    +long util_avg
+    +int util_est
+}
+
+class "struct sched_statistics" as sched_statistics <<struct>> {
+    +u64 wait_start
+    +u64 wait_max
+    +u64 wait_count
+    +u64 wait_sum
+    +u64 iowait_count
+    +u64 iowait_sum
+    +u64 sleep_start
+    +u64 sleep_max
+    +s64 sum_sleep_runtime
+    +u64 block_start
+    +u64 block_max
+    +s64 sum_block_runtime
+    +s64 exec_max
+    +u64 slice_max
+    +u64 nr_migrations_cold
+    +u64 nr_failed_migrations_affine
+    +u64 nr_failed_migrations_running
+    +u64 nr_failed_migrations_hot
+    +u64 nr_forced_migrations
+    +u64 nr_wakeups
+    .. 9 more fields ..
+}
+
+class "struct sched_entity" as sched_entity <<struct>> {
+    +struct load_weight load
+    +struct rb_node run_node
+    +u64 deadline
+    +u64 min_vruntime
+    +u64 min_slice
+    +struct list_head group_node
+    +char on_rq
+    +char sched_delayed
+    +char rel_deadline
+    +char custom_slice
+    +u64 exec_start
+    +u64 sum_exec_runtime
+    +u64 prev_sum_exec_runtime
+    +u64 vruntime
+    +s64 vlag
+    +u64 vprot
+}
+
+class "struct sched_rt_entity" as sched_rt_entity <<struct>> {
+    +struct list_head run_list
+    +long timeout
+    +long watchdog_stamp
+    +int time_slice
+    +short on_rq
+    +short on_list
+    +struct sched_rt_entity * back
+    +struct sched_rt_entity * parent
+    +struct rt_rq * rt_rq
+    +struct rt_rq * my_q
+}
+
+class "struct sched_dl_entity" as sched_dl_entity <<struct>> {
+    +struct rb_node rb_node
+    +u64 dl_runtime
+    +u64 dl_deadline
+    +u64 dl_period
+    +u64 dl_bw
+    +u64 dl_density
+    +s64 runtime
+    +u64 deadline
+    +int flags
+    +int dl_throttled
+    +int dl_yielded
+    +int dl_non_contending
+    +int dl_overrun
+    +int dl_server
+    +int dl_server_active
+    +int dl_defer
+    +int dl_defer_armed
+    +int dl_defer_running
+    +int dl_defer_idle
+    +struct hrtimer dl_timer
+    .. 4 more fields ..
+}
+
+class "struct uclamp_se" as uclamp_se <<struct>> {
+    +int active
+    +int user_defined
+}
+
+class "struct wake_q_node" as wake_q_node <<struct>> {
+    +struct wake_q_node * next
+}
+
+class "struct kmap_ctrl" as kmap_ctrl <<struct>> {
+    +int idx
+    +pte_t[KM_MAX_IDX] pteval
+}
+
+class "struct task_struct" as task_struct <<struct>> {
+    +struct thread_info thread_info
+    -int __state
+    +int saved_state
+    +void * stack
+    +refcount_t usage
+    +int flags
+    +int ptrace
+    +struct alloc_tag * alloc_tag
+    +int on_cpu
+    +struct __call_single_node wake_entry
+    +int wakee_flips
+    +long wakee_flip_decay_ts
+    +struct task_struct * last_wakee
+    +int recent_used_cpu
+    +int wake_cpu
+    +int on_rq
+    +int prio
+    +int static_prio
+    +int normal_prio
+    +int rt_priority
+    .. 274 more fields ..
+}
+
+sched_entity *-- load_weight : load
+task_struct *-- sched_entity : se
+task_struct *-- sched_rt_entity : rt
+task_struct *-- sched_dl_entity : dl
+task_struct --> sched_dl_entity : dl_server
+task_struct "1" *-- "*" uclamp_se : uclamp_req
+task_struct "1" *-- "*" uclamp_se : uclamp
+task_struct *-- sched_statistics : stats
+task_struct *-- sched_info : sched_info
+task_struct *-- prev_cputime : prev_cputime
+task_struct *-- vtime : vtime
+task_struct *-- wake_q_node : wake_q
+task_struct *-- kmap_ctrl : kmap_ctrl
+@enduml

@@ -1,0 +1,75 @@
+@startuml Memory_ERD
+title Memory Management - Entity Relationships
+
+skinparam linetype ortho
+
+entity "mm_struct" as mm {
+    * mmap : vm_area_struct*
+    --
+    * pgd : pgd_t*
+    * mm_users : atomic_t
+    * task_size : unsigned long
+}
+
+entity "vm_area_struct" as vma {
+    * vm_start : unsigned long
+    --
+    * vm_end : unsigned long
+    * vm_flags : unsigned long
+    * vm_pgoff : unsigned long
+}
+
+entity "page" as page {
+    * flags : unsigned long
+    --
+    * _mapcount : atomic_t
+    * _refcount : atomic_t
+    * index : unsigned long
+}
+
+entity "address_space" as mapping {
+    * host : inode*
+    --
+    * i_pages : xarray
+    * nrpages : unsigned long
+}
+
+entity "anon_vma" as anon {
+    * root : anon_vma*
+    --
+    * rb_root : rb_root
+    * refcount : atomic_t
+}
+
+entity "zone" as zone {
+    * watermark[3] : unsigned long
+    --
+    * free_area[MAX_ORDER] : free_area
+    * zone_pgdat : pglist_data*
+}
+
+entity "pglist_data" as node {
+    * node_zones[] : zone
+    --
+    * node_id : int
+    * node_start_pfn : unsigned long
+}
+
+mm ||--|{ vma : "->mmap (VMA list)"
+vma }o--o| mapping : "->vm_file->f_mapping"
+vma }o--o| anon : "->anon_vma"
+mapping ||--|{ page : "page cache"
+anon ||--|{ vma : "reverse mapping"
+zone ||--|{ page : "free pages"
+node ||--|{ zone : "memory zones"
+
+note bottom of vma
+    Virtual Memory Area
+    Represents contiguous virtual address range
+end note
+
+note bottom of page
+    Physical page frame descriptor
+    struct page is ~64 bytes
+end note
+@enduml

@@ -1,0 +1,78 @@
+@startuml Process_ERD
+title Process Management - Entity Relationships
+
+skinparam linetype ortho
+
+entity "task_struct" as task {
+    * pid : pid_t
+    --
+    * tgid : pid_t
+    * state : unsigned int
+    * comm[16] : char
+    * flags : unsigned int
+}
+
+entity "mm_struct" as mm {
+    * mmap : vm_area_struct*
+    --
+    * pgd : pgd_t*
+    * mm_users : atomic_t
+    * mm_count : atomic_t
+    * start_code : unsigned long
+    * end_code : unsigned long
+}
+
+entity "files_struct" as files {
+    * fdt : fdtable*
+    --
+    * count : atomic_t
+    * next_fd : unsigned int
+}
+
+entity "signal_struct" as signal {
+    * nr_threads : atomic_t
+    --
+    * leader_pid : pid*
+    * tty : tty_struct*
+}
+
+entity "cred" as cred {
+    * uid : kuid_t
+    --
+    * gid : kgid_t
+    * euid : kuid_t
+    * egid : kgid_t
+}
+
+entity "nsproxy" as ns {
+    * count : atomic_t
+    --
+    * mnt_ns : mnt_namespace*
+    * pid_ns : pid_namespace*
+    * net_ns : net*
+}
+
+entity "thread_info" as ti {
+    * flags : unsigned long
+    --
+    * cpu : u32
+    * preempt_count : int
+}
+
+task ||--o| mm : "->mm"
+task ||--|| files : "->files"
+task ||--|| signal : "->signal (thread group)"
+task ||--|| cred : "->cred"
+task ||--|| ns : "->nsproxy"
+task ||--|| ti : embedded
+
+task }|--|| task : "->parent"
+task }|--|{ task : "->children"
+task }|--|{ task : "->sibling"
+task }|--|{ task : "->thread_group"
+
+note bottom of task
+    Central process descriptor
+    Contains all process state
+end note
+@enduml
